@@ -1,0 +1,71 @@
+feature medi { # Medial Forms
+ script mong; # Mongolian
+lookup medi7 {
+lookupflag IgnoreMarks;
+    sub uni1820 uni180B by uni1820.medivar1;
+    sub uni1820 uni180C by uni1820.medivar2;
+    sub uni1822 uni180B by uni1822.medivar1;
+    sub uni1822 uni180C by uni1822.medivar2;
+    sub uni1822 uni180D by uni1822.medivar3;
+    sub uni1823 uni180B by uni1823.medivar1;
+    sub uni1824 uni180B by uni1824.medivar1;
+    sub uni1825 uni180B by uni1825.medi;
+    sub uni1825 uni180C by uni1825.medivar2;
+    sub uni1826 uni180B by uni1826.medi;
+    sub uni1826 uni180C by uni1826.medivar2;
+    sub uni1828 uni180B by uni1828.medivar1;
+    sub uni1828 uni180C by uni1828.medivar2;
+    sub uni182C uni180B by uni182C.medivar1;
+    sub uni182C uni180C by uni182C.medivar2;
+    sub uni182C uni180D by uni182C.medivar3;
+    sub uni182D uni180B by uni182D.medivar1;
+    sub uni182D uni180C by uni182D.medivar2;
+    sub uni182D uni180D by uni182D.medifem;
+    sub uni1832 uni180B by uni1832.medivar1;
+    sub uni1832 uni180C by uni1832.medivar2;
+    sub uni1833 uni180B by uni1833.medivar1;
+    sub uni1835 uni180B by uni1835.medivar1;
+    sub uni1836 uni180B by uni1836.medivar1;
+    sub uni1836 uni180C by uni1836.medivar2;
+    sub uni1836 uni180D by uni1836.medivar3;
+    sub uni183A uni180B by uni183A.medivar1;
+    sub uni1840 uni180B by maaglha.medi;
+    sub uni1844 uni180B by uni1844.medivar1;
+    sub uni1845 uni180B by uni1845.medivar1;
+    sub uni1846 uni180B by uni1846.medivar1;
+    sub uni1847 uni180B by uni1847.medivar1;
+    sub uni1847 uni180C by uni1847.medivar2;
+    sub uni1848 uni180B by uni1848.medivar1;
+    sub uni1849 uni180B by uni1849.medivar1;
+    sub uni184D uni180B by uni184D.medifem;
+    sub uni184E uni180B by uni184E.medivar1;
+    sub uni185D uni180B by uni185D.medivar1;
+    sub uni185E uni180B by uni185E.medivar1;
+    sub uni185E uni180C by uni185E.medivar2;
+    sub uni1860 uni180B by uni1860.medivar1;
+    sub uni1860 uni180C by uni1860.medivar2;
+    sub uni1863 uni180B by uni1863.medivar1;
+    sub uni1865 uni180B by uni1865.medivar1;
+    sub uni1868 uni180B by uni1868.medivar1;
+    sub uni1868 uni180C by uni1868.medivar2;
+    sub uni1869 uni180B by uni1869.medivar1;
+    sub uni186F uni180B by uni186F.medivar1;
+    sub uni1873 uni180B by uni1873.medivar1;
+    sub uni1873 uni180C by uni1873.medivar2;
+    sub uni1873 uni180D by uni1873.medivar3;
+    sub uni1874 uni180B by uni1874.medivar1;
+    sub uni1874 uni180C by uni1874.medifem;
+    sub uni1874 uni180D by uni1874.medifemvar1;
+    sub uni1876 uni180B by uni1876.medivar1;
+    sub uni1888 uni180B by uni1888.medivar1;
+    sub uni188A uni180B by uni188A.medivar1;
+    sub uni18A1 uni180B by uni18A1.medivar1;
+} medi7;
+lookup medi8 {
+    sub @medi1 by @medi2;
+} medi8;
+ language MCH ; # Manchu
+ language MNG ; # Mongolian
+ language SIB ; # Sibe
+ language TOD ; # Todo
+} medi;

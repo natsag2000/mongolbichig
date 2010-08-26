@@ -1,0 +1,35 @@
+feature isol { # Isolated Forms
+ script mong; # Mongolian
+lookup isol3 {
+lookupflag IgnoreMarks;
+    sub uni1820 uni180B by uni1820.var1;
+    sub uni1820 uni180C by uni1820.var2;
+    sub uni1821 uni180B by uni1821.var1;
+    sub uni1822 uni180B by uni1822.var1;
+    sub uni1824 uni180B by uni1824.var1;
+    sub uni1826 uni180B by uni1826.var1;
+    sub uni1826 uni180C by uni1826.var2;
+    sub uni1828 uni180B by uni1828.initvar1;
+    sub uni182C uni180B by uni182C.isolfem;
+    sub uni182D uni180B by uni182C.isolfem;
+    sub uni1835 uni180B by uni1835.var1;
+    sub uni1840 uni180B by maaglha;
+    sub uni1847 uni180B by uni1847.var1;
+    sub uni1849 uni180B by uni1849.var1;
+    sub uni184E uni180B by uni184E.initfem;
+    sub uni185D uni180B by uni185D.isol;
+    sub uni185E uni180B by uni185E.isol;
+    sub uni1861 uni180B by uni1861.isol;
+    sub uni1873 uni180B by uni1873.isol;
+    sub uni1874 uni180B by uni1874.isolfem;
+    sub uni1887 uni180B by uni1887.var1;
+} isol3;
+lookup isol4 {
+    sub @isol1 by @isol2;
+} isol4;
+ language MCH  exclude_dflt; # Manchu
+lookup isol4;
+ language MNG ; # Mongolian
+ language SIB ; # Sibe
+ language TOD ; # Todo
+} isol;

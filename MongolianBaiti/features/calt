@@ -1,0 +1,343 @@
+feature calt { # Contextual Alternates
+ script mong; # Mongolian
+lookup calt1 {
+lookupflag IgnoreMarks;
+    sub uni180A by uni180A.mark;
+} calt1;
+lookup calt19 {
+    sub uni182D.medivar2' @calt43 by uni182D.medivar3;
+} calt19;
+lookup calt20 {
+    sub uni202F @calt10' by [uni1820.finavar1 uni1820.medivar2 uni1821.finavar1 uni1822.fina uni1822.medi uni1823.fina uni1823.medi uni1824.medi uni1824.fina uni1826.fina uni1833.initvar1 uni1835.var1 uni185E.fina uni1869.initvar1 uni1869.initvar1 uni1873.fina];
+} calt20;
+lookup calt21 {
+    sub uni202F uni1836.init' [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] by uni1836.initvar2;
+    sub uni202F uni1836.init' uni1822.fina by uni1836.initvar2;
+} calt21;
+lookup calt22 {
+    sub uni1836.medivar1' @calt22 by uni1836.medi;
+} calt22;
+lookup calt23 {
+    sub uni1836.medi' [uni1822.medi uni1822.medivar1 uni1822.fina uni1822.medivar2] by uni1836.medivar1;
+} calt23;
+lookup calt24 {
+    sub uni182D.initfem' @calt39 by uni182D.medifem;
+} calt24;
+lookup calt25 {
+    sub uni180E [uni1820 uni1820.fina uni1821 uni1821.fina]' by [uni1820.mvsvar1 uni1820.mvsvar1 uni1821.mvsvar1 uni1821.mvsvar1];
+} calt25;
+lookup calt26 {
+    sub @calt9' uni180E by [uni1828.finavar3 uni1828.finavar2 uni1828.finavar3 uni182D.finavar2 uni182D.finavar3 uni182D.finavar3 uni182D.finavar2 uni182E.fina uni1830.fina uni1831.fina uni1835.var1 uni1836.finavar1 uni1837.fina uni1838.finavar1 uni1838.finavar1];
+} calt26;
+lookup calt27 {
+lookupflag 0;
+    sub uni1830.init uni182D.finavar3' uni180E by uni182D.finavar2;
+} calt27;
+lookup calt28 {
+    sub uni1833.init uni182D.finavar3' uni180E by uni182D.finavar2;
+} calt28;
+lookup calt29 {
+lookupflag IgnoreMarks;
+    sub @calt13 @calt1' by [uni185D.finavar1 uni185D.medivar1 uni185D.finavar3 uni1860.finavar1 uni1860.medivar1 uni1860.finavar3];
+} calt29;
+lookup calt30 {
+    sub [uni1868.init uni1868.medi uni1869.medi]' @calt21 by [uni1868.initvar1 uni1868.medivar1 uni1869.medivar1];
+} calt30;
+lookup calt31 {
+    sub [uni1869.init uni18A0.init uni18A0.medi uni18A1.init uni18A1.medi]' @calt5 by [uni1869.initvar1 uni18A0.initvar1 uni18A0.medivar1 uni18A1.initvar1 uni18A1.medivar1];
+} calt31;
+lookup calt32 {
+    sub [uni1868.init uni1868.medi]' @calt37 by [uni1868.initvar1 uni1868.medivar2];
+} calt32;
+lookup calt33 {
+    sub @calt20 uni1860.fina' by uni1860.finavar1;
+} calt33;
+lookup calt34 {
+    sub @calt17 uni1845.medi' by uni1845.medivar1;
+} calt34;
+lookup calt35 {
+    sub @calt3 uni1847.medi' by uni1847.medivar2;
+} calt35;
+lookup calt36 {
+    sub @calt3 uni1847.fina' by uni1847.finavar1;
+} calt36;
+lookup calt37 {
+    sub @calt20 [uni185E.medi uni1873.medi uni1873.finavar2]' by [uni185E.medivar1 uni1873.medivar1 uni1873.finavar4];
+} calt37;
+lookup calt38 {
+    sub [uni186F.init uni186F.medi]' [uni185E.medi uni185E.medivar2 uni1888.medi uni1888.medivar1] by [uni186F.initvar1 uni186F.medivar1];
+} calt38;
+lookup calt39 {
+    sub [uni186F.init uni186F.medi]' [uni185E.fina uni185E.finavar1 uni185E.finavar2] by [uni186F.initvar1 uni186F.medivar1];
+} calt39;
+lookup calt40 {
+    sub [uni186F.initvar1 uni186F.medivar1 uni189C.init uni189D.init] [uni185E.fina uni185E.medi uni1888.fina uni1888.medi]' by [uni185E.finavar1 uni185E.medivar2 uni1888.finavar1 uni1888.medivar1];
+} calt40;
+lookup calt41 {
+    sub uni186F.medi' [uni1888.fina uni1888.finavar1 uni1888.finavar2] by uni186F.medivar1;
+} calt41;
+lookup calt42 {
+    sub [uni186F.init uni186F.initvar1 uni189C.init uni189D.init uni189E.init] [uni1888.fina uni1888.medi]' by [uni1888.finavar1 uni1888.medivar1];
+} calt42;
+lookup calt43 {
+    sub [uni1876.init uni1876.medi]' @calt19 by [uni1876.initvar1 uni1876.medivar1];
+} calt43;
+lookup calt44 {
+    sub @calt31 @calt33 uni1825.medivar1 uni1822.medi' by uni1822.medivar2;
+    sub @calt31 @calt33 uni1826.medivar1 uni1822.medi' by uni1822.medivar2;
+    sub @calt33 @calt33 uni1825.medivar1 uni1822.medi' by uni1822.medivar2;
+    sub @calt33 @calt33 uni1826.medivar1 uni1822.medi' by uni1822.medivar2;
+} calt44;
+lookup calt45 {
+    sub [uni1820.init uni1820.initvar1 uni1823.init uni1861.init] uni1874.medi' @calt25 by uni1874.medivar1;
+    sub @calt2 uni1874.medi' @calt25 by uni1874.medivar1;
+    sub [uni1820.init uni1820.initvar1 uni1823.init uni1861.init] uni1874.medi' @calt24 by uni1874.medivar1;
+    sub @calt2 uni1874.medi' @calt24 by uni1874.medivar1;
+} calt45;
+lookup calt46 {
+    sub uni1863.medi' @calt30 by uni1863.medivar1;
+} calt46;
+lookup calt47 {
+    sub [uni185D.init uni185E.init uni1860.init uni1873.init] uni1874.medi' @calt25 by uni1874.medifem;
+    sub [uni185D.init uni185E.init uni1860.init uni1873.init] uni1874.medi' @calt24 by uni1874.medifem;
+    sub @calt4 uni1874.medi' @calt25 by uni1874.medifem;
+    sub @calt4 uni1874.medi' @calt24 by uni1874.medifem;
+} calt47;
+lookup calt48 {
+    sub uni182C.initfem' @calt7 by uni182C.init;
+} calt48;
+lookup calt49 {
+    sub [uni182D.medi uni182D.medivar1 uni182D.initfem]' @calt7 by [uni182D.medivar1 uni182D.medi uni182D.init];
+} calt49;
+lookup calt50 {
+    sub uni1830.medi uni182D.medivar1' @calt15 by uni182D.medi;
+    sub uni1830.init uni182D.medivar1' @calt15 by uni182D.medi;
+    sub uni1833.medi uni182D.medivar1' @calt15 by uni182D.medi;
+    sub uni1833.init uni182D.medivar1' @calt15 by uni182D.medi;
+    sub uni1830.medi uni182D.medivar1' @calt16 by uni182D.medi;
+    sub uni1830.init uni182D.medivar1' @calt16 by uni182D.medi;
+    sub uni1833.medi uni182D.medivar1' @calt16 by uni182D.medi;
+    sub uni1833.init uni182D.medivar1' @calt16 by uni182D.medi;
+} calt50;
+lookup calt51 {
+    sub @calt23 [uni1825.medivar1 uni1826.medivar1]' by [uni1825.medi uni1826.medi];
+} calt51;
+lookup calt52 {
+    sub uni202F uni1826.init' [uni1828.medi uni1828.medivar1 uni1828.fina uni1833.fina uni1833.medi uni1833.medivar1] by uni1826.medivar1;
+} calt52;
+lookup calt53 {
+    sub [uni1828.medi uni1828.medivar1]' @calt35 by [uni1828.medivar1 uni1828.medi];
+} calt53;
+lookup calt54 {
+    sub uni202F [uni1828.init uni1828.initvar1]' uni1845.medi by [uni1828.medivar3 uni1828.init];
+    sub uni202F [uni1828.init uni1828.initvar1]' uni1845.fina by [uni1828.medivar3 uni1828.init];
+} calt54;
+lookup calt55 {
+    sub @calt32 uni1820.medi' uni1843.fina' by uni18201843.fina;
+} calt55;
+lookup calt56 {
+    sub [uni1844.medi uni1844.medivar1 uni1845.medi uni1845.medivar1 uni1846.medi uni1846.medivar1 uni1848.medi uni1848.medivar1] uni1843.fina' by uni1843.finavar1;
+} calt56;
+lookup calt57 {
+    sub @calt6 uni182D.medi' @calt39 by uni182D.medifem;
+    sub [uni1822.init uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.medi' @calt27 @calt12 by uni182D.medifem;
+    sub [uni1822.init uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.medi' @calt27 @calt27 @calt12 by uni182D.medifem;
+    sub @calt14 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.medi' @calt39 by uni182D.medifem;
+    sub @calt14 @calt27 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.medi' @calt39 by uni182D.medifem;
+    sub @calt38 uni182D.medi' @calt39 by uni182D.medifem;
+} calt57;
+lookup calt58 {
+    sub @calt8 uni182D.fina' by uni182D.finafem;
+    sub @calt14 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.fina' by uni182D.finafem;
+    sub @calt14 @calt27 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.fina' by uni182D.finafem;
+    sub @calt6 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.fina' by uni182D.finafem;
+    sub @calt6 @calt27 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.fina' by uni182D.finafem;
+    sub @calt6 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] @calt27 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.fina' by uni182D.finafem;
+    sub @calt6 @calt27 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] @calt27 @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.fina' by uni182D.finafem;
+} calt58;
+lookup calt59 {
+    sub uni1833.medi' @calt22 by uni1833.medivar1;
+} calt59;
+lookup calt60 {
+    sub [uni1822.init uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.finavar1' by uni182D.fina;
+} calt60;
+lookup calt61 {
+    sub @calt11 [uni1874.fina uni1874.finafem]' by [uni1874.finafem uni1874.fina];
+} calt61;
+lookup calt62 {
+    sub @calt36 uni1824.fina' uni180B' by uni1824.finavar1;
+} calt62;
+lookup calt63 {
+    sub [uni18A6.init uni18A6.medi] uni1887.fina' by uni1887.finavar1;
+} calt63;
+lookup calt64 {
+    sub [uni188A.init uni188A.medi] uni1887.fina' by uni1887.finavar2;
+} calt64;
+lookup calt65 {
+    sub @calt44 uni1887.fina' by uni1887.finavar3;
+} calt65;
+lookup calt66 {
+    sub [uni188A.init uni188A.medi]' uni1887.finavar2 by [uni188A.initvar1 uni188A.medivar1];
+} calt66;
+lookup calt67 {
+    sub @calt36 [uni1824.fina uni1825.fina uni1826.fina]' uni180B' by uni1824.finavar1;
+} calt67;
+lookup calt68 {
+    sub uni184E.medi' @calt34 by uni184E.medivar1;
+} calt68;
+lookup calt69 {
+    sub [uni188A.init uni188A.medi] uni1887.fina' by uni1887.finavar2;
+} calt69;
+lookup calt70 {
+    sub [uni188A.init uni188A.medi]' uni1887.fina by [uni188A.initvar1 uni188A.medivar1];
+} calt70;
+lookup calt71 {
+lookupflag 0;
+    sub uni180A.mark by uni180A;
+} calt71;
+lookup calt73 {
+lookupflag IgnoreMarks;
+    sub uni202F uni1828.init [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni182F.init [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni1832.init [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni1833.initvar1 [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni1836.initvar2 [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni1836.init [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+} calt73;
+lookup calt74 {
+lookupflag 0;
+    sub uni200D uni1836.medi' uni200D by uni1836.medivar1;
+} calt74;
+lookup calt75 {
+    sub uni200D uni1838.medi' uni200D by uni1838.finavar1;
+} calt75;
+lookup calt76 {
+    sub uni182C uni180B uni1825 uni202F by uni182C1825.var3;
+    sub uni182C uni180B uni1826 uni202F by uni182C1825.var3;
+} calt76;
+lookup calt77 {
+    sub @calt38 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] @calt27 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.fina' [space uni202F] by uni182D.finafem;
+} calt77;
+lookup calt78 {
+    sub @calt18 uni182D.fina' [space uni202F] by uni182D.finafem;
+} calt78;
+lookup calt79 {
+    sub @calt38 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.finafem' uni180B [space uni202F] by uni182D.fina;
+} calt79;
+lookup calt80 {
+    sub @calt40 @calt28 [uni1822.medi uni1822.medivar1 uni1822.medivar2 uni1822.medivar3] uni182D.finafem' [space uni202F] by uni182D.fina;
+} calt80;
+lookup calt81 {
+    sub @calt26 uni1822.medi uni182D.medi' @calt29 by uni182D.medifem;
+} calt81;
+lookup calt83 {
+    sub @calt42 uni1836.medivar1' uni1822.fina uni180B by uni1836.medi;
+} calt83;
+lookup calt84 {
+    sub uni202F uni1822.medi uni1836.medi' @calt41 by uni1836.medivar1;
+} calt84;
+lookup calt85 {
+    sub [uni182C1825.var1 uni182C1826.var1]' [space uni202F] by [uni182C1825.finavar3 uni182C1825.finavar3];
+} calt85;
+lookup calt86 {
+    sub uni202F uni1832.init uni1826.medivar1' [space uni202F] by uni1826.fina;
+    sub uni202F uni1832.medi uni1826.medivar1' [space uni202F] by uni1826.fina;
+    sub uni202F uni1833.init uni1826.medivar1' [space uni202F] by uni1826.fina;
+    sub uni202F uni1833.initvar1 uni1826.medivar1' [space uni202F] by uni1826.fina;
+    sub uni202F uni1828.init uni1826.medivar1' uni202F by uni1826.fina;
+    sub uni202F uni1836.initvar2 uni1826.medivar1' uni202F by uni1826.fina;
+    sub uni202F uni1836.init uni1826.medivar1' uni202F by uni1826.fina;
+    sub uni202F uni1836.initvar1 uni1826.medivar1' uni202F by uni1826.fina;
+    sub uni202F uni182F.init uni1826.medivar1' uni202F by uni1826.fina;
+} calt86;
+lookup calt87 {
+    sub uni182E.init uni1823.medi uni1829182D.medi' uni1823.medi uni182F.fina by uni1829182D.medivar1;
+} calt87;
+lookup calt88 {
+    sub uni182E.init uni1820.medi uni1829182D.fina' uni180E by uni1829182D.finavar1;
+} calt88;
+ language MCH  exclude_dflt; # Manchu
+lookup calt20;
+lookup calt29;
+lookup calt30;
+lookup calt31;
+lookup calt32;
+lookup calt33;
+lookup calt37;
+lookup calt38;
+lookup calt40;
+lookup calt41;
+lookup calt42;
+lookup calt43;
+lookup calt45;
+lookup calt47;
+lookup calt53;
+lookup calt61;
+lookup calt65;
+lookup calt71;
+ language MNG  exclude_dflt; # Mongolian
+lookup calt19;
+lookup calt20;
+lookup calt21;
+lookup calt22;
+lookup calt23;
+lookup calt24;
+lookup calt25;
+lookup calt26;
+lookup calt44;
+lookup calt48;
+lookup calt49;
+lookup calt50;
+lookup calt51;
+lookup calt52;
+lookup calt53;
+lookup calt57;
+lookup calt58;
+lookup calt59;
+lookup calt60;
+lookup calt62;
+lookup calt63;
+lookup calt64;
+lookup calt65;
+lookup calt66;
+lookup calt71;
+lookup calt73;
+lookup calt74;
+lookup calt75;
+lookup calt77;
+lookup calt78;
+lookup calt79;
+lookup calt81;
+lookup calt82 {
+    sub [uni182C1825.initvar3 uni182C1826.initvar2]' [space uni202F] by [uni182C1825.var3 uni182C1825.var3];
+} calt82;
+lookup calt83;
+lookup calt84;
+lookup calt85;
+lookup calt87;
+lookup calt88;
+ language SIB  exclude_dflt; # Sibe
+lookup calt20;
+lookup calt29;
+lookup calt30;
+lookup calt31;
+lookup calt32;
+lookup calt37;
+lookup calt38;
+lookup calt39;
+lookup calt40;
+lookup calt46;
+lookup calt53;
+lookup calt71;
+ language TOD  exclude_dflt; # Todo
+lookup calt34;
+lookup calt35;
+lookup calt36;
+lookup calt54;
+lookup calt55;
+lookup calt56;
+lookup calt68;
+lookup calt69;
+lookup calt70;
+lookup calt71;
+} calt;

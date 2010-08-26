@@ -1,0 +1,10 @@
+feature  RQD {
+ script mong; # Mongolian
+    sub ML.BA uF3A8 by uF406;
+    sub ML.PA uF3A8 by uF410;
+    sub ML.QA uF3A8 by uF41A;
+    sub ML.GA uF3A8 by uF41A;
+    sub ML.FA uF3A8 by uF42E;
+    sub ML.KA uF3A8 by uF438;
+    sub ML.KHA uF3A8 by uF442;
+}  RQD;

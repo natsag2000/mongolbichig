@@ -1,0 +1,37 @@
+feature init { # Initial Forms
+ script mong; # Mongolian
+lookup init9 {
+lookupflag IgnoreMarks;
+    sub uni1820 uni180B by uni1820.initvar1;
+    sub uni1821 uni180B by uni1821.initvar1;
+    sub uni1826 uni180B by uni1826.initvar1;
+    sub uni1828 uni180B by uni1828.initvar1;
+    sub uni1828 uni180C by uni1828.medivar3;
+    sub uni182C uni180B by uni182C.initvar1;
+    sub uni182D uni180B by uni182D.initvar1;
+    sub uni182D uni180C by uni182D.initvar2;
+    sub uni1833 uni180B by uni1833.initvar1;
+    sub uni1836 uni180B by uni1836.initvar1;
+    sub uni1836 uni180C by uni1836.initvar2;
+    sub uni183A uni180B by uni183A.initvar1;
+    sub uni1840 uni180B by maaglha.init;
+    sub uni184D uni180B by uni184D.initfem;
+    sub uni184E uni180B by uni184E.initfem;
+    sub uni1863 uni180B by uni1863.initfem;
+    sub uni1864 uni180B by uni1864.initvar1;
+    sub uni1868 uni180B by uni1868.initvar1;
+    sub uni1869 uni180B by uni1869.initvar1;
+    sub uni186F uni180B by uni186F.initvar1;
+    sub uni1874 uni180B by uni1874.isolfem;
+    sub uni1876 uni180B by uni1876.initvar1;
+    sub uni188A uni180B by uni188A.initvar1;
+    sub uni18A1 uni180B by uni18A1.initvar1;
+} init9;
+lookup init10 {
+    sub @init1 by @init2;
+} init10;
+ language MCH ; # Manchu
+ language MNG ; # Mongolian
+ language SIB ; # Sibe
+ language TOD ; # Todo
+} init;

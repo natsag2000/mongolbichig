@@ -1,0 +1,19 @@
+#!/usr/local/bin/fontforge
+a = Array(2)
+a[0]=24
+a[1]=128
+Open($1)
+Reencode("unicode")
+test=0x1810
+while(test < 0x1819)
+    Select(test)
+    BitmapsAvail(a)
+    Export("bmp", 128)
+    Print(test)
+    test=test + 1
+endloop
+
+Select("uni180D")
+BitmapsAvail(a)
+Export("%e.bmp", 128)
+

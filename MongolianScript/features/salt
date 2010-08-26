@@ -1,0 +1,16 @@
+feature salt { # Stylistic Alternates
+ script mong; # Mongolian
+lookup salt8 {
+    sub uF32C by ML.DA;
+} salt8;
+lookup salt9 {
+    sub [uF3AC uF3AF] by [uF315 uF31B];
+} salt9;
+lookup salt10 {
+    sub [uF314 uF31A] by [uF3AB uF3B0];
+} salt10;
+lookup salt13 {
+    sub [ML.I ML.U ML.UE ML.YA] by [ML.JA uF30C uF3A5 ML.JA];
+    sub uF30A by ML.JA;
+} salt13;
+} salt;

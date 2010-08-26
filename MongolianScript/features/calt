@@ -1,0 +1,13 @@
+feature calt { # Contextual Alternates
+ script mong; # Mongolian
+lookup calt4 {
+    sub uF32C' @calt1 by ML.DA;
+    sub [uF3AC uF3AF]' M.vowel_separator by [uF315 uF31B];
+    sub uF314' @calt3 by uF3AB;
+    sub uF31A' @calt2 by uF3B0;
+} calt4;
+lookup calt7 {
+    sub narrow_no_break_space [ML.O ML.U ML.OE ML.UE]' [uF32D uF3AC] by [ML.O uF30C ML.OE uF3A5];
+    sub narrow_no_break_space [ML.I ML.YA uF30A]' [ML.I ML.JA ML.YA uF30A uF30B] by [ML.JA ML.JA ML.JA];
+} calt7;
+} calt;

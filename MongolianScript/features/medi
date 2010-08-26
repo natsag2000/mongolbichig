@@ -1,0 +1,4 @@
+feature medi { # Medial Forms
+ script mong; # Mongolian
+    sub @medi1 by @medi2;
+} medi;

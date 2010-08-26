@@ -1,0 +1,5 @@
+feature init { # Initial Forms
+ script mong; # Mongolian
+    sub [ML.A ML.E ML.I ML.O] by [uF304 uF3A0 uF30A ML.U];
+    sub [ML.OE ML.EE ML.DA] by [ML.UE uF312 ML.TA];
+} init;

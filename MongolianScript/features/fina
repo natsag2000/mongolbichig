@@ -1,0 +1,4 @@
+feature fina { # Terminal Forms
+ script mong; # Mongolian
+    sub @fina1 by @fina2;
+} fina;

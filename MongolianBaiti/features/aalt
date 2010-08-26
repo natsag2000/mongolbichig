@@ -1,0 +1,5 @@
+feature aalt{
+  feature isol;
+  feature calt;
+  feature vert;
+} aalt;

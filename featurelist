@@ -1,0 +1,45 @@
+MongolianScript
+================
+aalt
+mark
+rlig
+calt
+ccmp
+isol
+fina
+medi
+init
+vert
+
+feature aalt{
+  feature init;
+  feature medi;
+  feature fina;
+  feature calt;
+  feature isol;
+  feature salt;
+  feature smpl;
+} aalt;
+
+MongolianBaiti
+==============
+aalt
+mark
+rlig
+calt
+ccmp
+isol
+fina
+medi
+init
+vert
+
+feature aalt{
+  feature isol;
+  feature calt;
+  feature vert;
+} aalt;
+
+MongolianScript: 707
+MongolianBaiti: 1824
+

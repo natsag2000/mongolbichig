@@ -1,0 +1,9 @@
+feature aalt{
+  feature init;
+  feature medi;
+  feature fina;
+  feature calt;
+  feature isol;
+  feature salt;
+  feature smpl;
+} aalt;

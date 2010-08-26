@@ -1,0 +1,9 @@
+feature vert { # Vertical Writing
+ script mong; # Mongolian
+    sub [exclam semicolon question bar] by [glyph1797 glyph1799 glyph1798 uni18A9.init];
+    sub [glyph1787 glyph1788] by [uni2048 uni2049];
+ language MCH ; # Manchu
+ language MNG ; # Mongolian
+ language SIB ; # Sibe
+ language TOD ; # Todo
+} vert;

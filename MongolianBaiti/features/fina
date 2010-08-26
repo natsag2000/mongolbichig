@@ -1,0 +1,50 @@
+feature fina { # Terminal Forms
+ script mong; # Mongolian
+lookup fina5 {
+lookupflag IgnoreMarks;
+    sub uni1820 uni180B by uni1820.finavar1;
+    sub uni1821 uni180B by uni1821.finavar1;
+    sub uni1823 uni180B by uni1823.finavar1;
+    sub uni1824 uni180B by uni1824.finavar1;
+    sub uni1825 uni180B by uni1825.finavar1;
+    sub uni1826 uni180B by uni1826.finavar1;
+    sub uni1828 uni180C by uni1828.finavar1;
+    sub uni182A uni180B by uni182A.finavar1;
+    sub uni182C uni180B by uni182C.finavar1;
+    sub uni182D uni180B by uni182D.finavar1;
+    sub uni182D uni180C by uni182D.finafem;
+    sub uni1830 uni180B by uni1830.finavar1;
+    sub uni1830 uni180C by uni1830.finavar2;
+    sub uni1833 uni180B by uni1833.finavar1;
+    sub uni1836 uni180B by uni1836.finavar1;
+    sub uni1838 uni180B by uni1838.finavar1;
+    sub uni1843 uni180B by uni1843.finavar1;
+    sub uni1847 uni180B by uni1847.finavar1;
+    sub uni185D uni180B by uni185D.finavar1;
+    sub uni185D uni180C by uni185D.finavar2;
+    sub uni185D uni180D by uni185D.finavar3;
+    sub uni185E uni180B by uni185E.finavar1;
+    sub uni185E uni180C by uni185E.finavar2;
+    sub uni185E uni180D by uni185E.finavar3;
+    sub uni1860 uni180B by uni1860.finavar1;
+    sub uni1860 uni180C by uni1860.finavar2;
+    sub uni1860 uni180D by uni1860.finavar3;
+    sub uni1873 uni180B by uni1873.finavar1;
+    sub uni1873 uni180C by uni1873.finavar2;
+    sub uni1873 uni180D by uni1873.finavar3;
+    sub uni1874 uni180B by uni1874.finafem;
+    sub uni1874 uni180C by uni1874.finafemvar1;
+    sub uni1887 uni180B by uni1887.finavar1;
+    sub uni1887 uni180C by uni1887.finavar2;
+    sub uni1887 uni180D by uni1887.finavar3;
+    sub uni1888 uni180B by uni1888.finavar1;
+    sub uni1888 uni180C by uni1888.finavar2;
+} fina5;
+lookup fina6 {
+    sub @fina1 by @fina2;
+} fina6;
+ language MCH ; # Manchu
+ language MNG ; # Mongolian
+ language SIB ; # Sibe
+ language TOD ; # Todo
+} fina;

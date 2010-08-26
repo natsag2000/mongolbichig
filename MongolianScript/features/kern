@@ -1,0 +1,6 @@
+feature kern { # Kerning
+ script mong; # Mongolian
+lookup kern0 {
+    pos ML.LHA ML.ZHI -24;
+} kern0;
+} kern;

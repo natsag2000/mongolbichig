@@ -1,0 +1,5 @@
+feature isol { # Isolated Forms
+ script mong; # Mongolian
+    sub [ML.A ML.E ML.I ML.O] by [ML.A ML.E ML.I ML.O];
+    sub [ML.U ML.OE ML.UE ML.EE] by [ML.O ML.OE ML.OE ML.EE];
+} isol;

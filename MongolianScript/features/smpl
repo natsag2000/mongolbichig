@@ -1,0 +1,4 @@
+feature smpl { # Simplified Forms
+ script mong; # Mongolian
+    sub [uF3A5 uF3A8] by [uF3A9 uF3A9];
+} smpl;
