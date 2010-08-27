@@ -3,7 +3,8 @@ digraph test_graph {
   compound=true;
   rankdir=LR;
   node [shape=plaintext];
-  edge [arrowsize=1, color=black];
+  //edge [ dir="forward", arrowsize=1, color=black, arrowhead="dot" ];
+  edge [ style=invisible];
 
   // nodes
   subgraph cluster_uni202F {
@@ -35,8 +36,8 @@ digraph test_graph {
     uni1826fina_icon [ label="", shape=box, style=invisible, shapefile="../web/images/uni1826.fina.png"];
 
   // edges
-  uni202F_icon -> uni1828init_icon;
+  uni202F_icon -> uni1828init_icon
   uni1828init_icon -> uni1826medivar1_icon;
   uni1826medivar1_icon -> uni202F_a_icon;
-  uni202F_a_icon -> uni1826fina_icon [style=bold];
+  uni202F_a_icon -> uni1826fina_icon [arrowsize=1, color=black, arrowhead="vee"];
 }
