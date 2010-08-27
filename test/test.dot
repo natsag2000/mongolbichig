@@ -1,0 +1,40 @@
+digraph test_graph {
+  compound=true;
+  rankdir=LR;
+  node [shape=plaintext];
+  edge [arrowsize=1, color=black];
+
+  // nodes
+  subgraph cluster_uni202F {
+    label="uni202F";
+    labelloc="b";
+    uni202F_icon};
+  uni202F_icon [ label="", shape=box, style=invisible, shapefile="uni202F.png"];
+  subgraph cluster_uni1828init {
+    label="uni1828.init";
+    labelloc="b";
+    uni1828init_icon};
+  uni1828init_icon [ label="", shape=box, style=invisible, shapefile="../web/images/uni1828.init.png"];
+  subgraph cluster_uni1826medivar1 {
+    label="uni1826.medivar1";
+    labelloc="b";
+    uni1826medivar1_icon};
+  uni1826medivar1_icon [ label="", shape=box, style=invisible, shapefile="../web/images/uni1826.medivar1.png"];
+  subgraph cluster_uni202F_a {
+    label="uni202F";
+    labelloc="b";
+    uni202F_a_icon};
+  uni202F_a_icon [ label="", shape=box, style=invisible, shapefile="uni202F.png"];
+  subgraph cluster_uni1826fina {
+    label="uni1826.fina";
+    labelloc="b";
+    color=blue;
+    uni1826fina_icon};
+    uni1826fina_icon [ label="", shape=box, style=invisible, shapefile="../web/images/uni1826.fina.png"];
+
+  // edges
+  uni202F_icon -> uni1828init_icon;
+  uni1828init_icon -> uni1826medivar1_icon;
+  uni1826medivar1_icon -> uni202F_a_icon;
+  uni202F_a_icon -> uni1826fina_icon [style=bold];
+}
