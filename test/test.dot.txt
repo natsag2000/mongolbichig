@@ -11,7 +11,7 @@ digraph test_graph {
     label="uni202F";
     labelloc="b";
     uni202F_icon};
-  uni202F_icon [ label="", shape=box, style=invisible, shapefile="uni202F.png"];
+  uni202F_icon [ label="NBS", shape=box];
   subgraph cluster_uni1828init {
     label="uni1828.init";
     labelloc="b";
@@ -27,7 +27,7 @@ digraph test_graph {
     label="uni202F";
     labelloc="b";
     uni202F_a_icon};
-  uni202F_a_icon [ label="", shape=box, style=invisible, shapefile="uni202F.png"];
+  uni202F_a_icon [ label="NBS", shape=box];
   subgraph cluster_uni1826fina {
     label="uni1826.fina";
     labelloc="b";
