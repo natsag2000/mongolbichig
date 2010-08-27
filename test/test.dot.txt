@@ -4,7 +4,7 @@ digraph test_graph {
   rankdir=LR;
   node [shape=plaintext];
   //edge [ dir="forward", arrowsize=1, color=black, arrowhead="dot" ];
-  edge [ style=invisible];
+  edge [ arrowsize=0, style=invisible];
 
   // nodes
   subgraph cluster_uni202F {
