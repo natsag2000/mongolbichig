@@ -68,4 +68,52 @@ extract_feature_lookups(<<C,Rest/binary>>, Buf, Lookup, Feature, body) ->
 %% extract substitution table
 %% ----------------------------------------------------------------
 extract_feature_table(Subs) ->
-    {ok, Subs}.
+    extract_sub_by(Subs, []).
+
+
+%% ----------------------------------------------------------------
+%% extract sub XXX by YYY
+%% NOTE: lookupflag ignored!!! TODO!!
+%% ----------------------------------------------------------------
+extract_sub_by(<<"sub", Rest/binary>>, LTable) ->
+    {ok, Subpart, Rest1} = extract_sub(Rest, [], []),
+    {ok, Byspart, Rest2} = extract_by(Rest1, [], []),
+    Lkup = #lookuptable{sub=Subpart, by=Byspart},
+    extract_sub_by(Rest2, [Lkup | LTable]);
+extract_sub_by(<<>>, LTable) ->
+    {ok, lists:reverse(LTable)};
+extract_sub_by(<<_C, Rest/binary>>, LTable) ->
+    extract_sub_by(Rest, LTable).
+
+%% extract sub XXX part
+extract_sub(<<" ", Rest/binary>>, [], []) ->
+    extract_sub(Rest, [], []);
+extract_sub(<<"by", Rest/binary>>, _Buf, Subs) ->
+    {ok, lists:reverse(Subs), Rest};
+extract_sub(<<" ", Rest/binary>>, Buf, Subs) ->
+    extract_sub(Rest, [], [Buf|Subs]);
+extract_sub(<<"[", Rest/binary>>, _Buf, Subs) ->
+    {ok, Brackets, Rest1} = extract_bracket(Rest, [], []),
+    extract_sub(Rest1, [], [Brackets|Subs]).
+
+%% extract "by YYY" part
+extract_by(<<" ", Rest/binary>>, [], [] ) ->
+    extract_by(Rest, [], []);
+extract_by(<<";", Rest/binary>>, Buf, Bys) ->
+   {ok, lists:reverse([lists:reverse(Buf) | Bys]), Rest };
+extract_by(<<" ", Rest/binary>>, Buf, Bys) ->
+    extract_by(Rest, [], [lists:reverse(Buf)|Bys]);
+extract_by(<<"[", Rest/binary>>, _Buf, Bys) ->
+    {ok, Brackets, Rest1} = extract_bracket(Rest, [], []),
+    extract_by(Rest1, [], [Brackets|Bys]);
+extract_by(<<C, Rest/binary>>, Buf, Bys) ->
+    extract_by(Rest, [C|Buf], Bys).
+
+%% extract [XXX,XXXX] bracket content
+extract_bracket(<<"]", Rest/binary>>, Buf, Ligas) ->
+    L1 = [lists:reverse(Buf) | Ligas],
+    {ok, lists:reverse(L1), Rest };
+extract_bracket(<<" ", Rest/binary>>, [], []) ->
+    extract_bracket(Rest, [], []);
+extract_bracket(<<" ", Rest/binary>>, Buf, Ligas) ->
+    extract_bracket(Rest, [], [lists:reverse(Buf)|Ligas]).

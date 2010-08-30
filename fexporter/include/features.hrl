@@ -9,3 +9,8 @@
           lookupflag="",
           lookups=[]
          }).
+-record(lookuptable,
+        {
+          sub=[],
+          by=[]
+         }).
