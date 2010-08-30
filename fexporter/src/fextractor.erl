@@ -1,7 +1,14 @@
+%%  __  __  ___  _   _  ____  ___  _     ____ ___ ____ _   _ ___ ____
+%% |  \/  |/ _ \| \ | |/ ___|/ _ \| |   | __ )_ _/ ___| | | |_ _/ ___|
+%% | |\/| | | | |  \| | |  _| | | | |   |  _ \| | |   | |_| || | |  _
+%% | |  | | |_| | |\  | |_| | |_| | |___| |_) | | |___|  _  || | |_| |
+%% |_|  |_|\___/|_| \_|\____|\___/|_____|____/___\____|_| |_|___\____|
+%%
+%% feature extractor
+%%
 -module(fextractor).
 -export([extract_feature/1]).
 -include("../include/features.hrl").
-
 
 extract_feature(File) ->
     {ok, Content} = file:read_file(File),
@@ -68,8 +75,7 @@ extract_feature_lookups(<<C,Rest/binary>>, Buf, Lookup, Feature, body) ->
 %% extract substitution table
 %% ----------------------------------------------------------------
 extract_feature_table(Subs) ->
-    extract_sub_by(Subs, []).
-
+    extract_sub_by(list_to_binary(Subs), []).
 
 %% ----------------------------------------------------------------
 %% extract sub XXX by YYY
@@ -90,11 +96,33 @@ extract_sub(<<" ", Rest/binary>>, [], []) ->
     extract_sub(Rest, [], []);
 extract_sub(<<"by", Rest/binary>>, _Buf, Subs) ->
     {ok, lists:reverse(Subs), Rest};
+extract_sub(<<" ", Rest/binary>>, {?ampers, Buff}, Subs) ->
+    extract_sub(Rest, [], [ {?ampers, lists:reverse(Buff)} | Subs ]);
+extract_sub(<<" ", Rest/binary>>, {?aphost, Buff}, Subs) ->
+    extract_sub(Rest, [], [{?aphost, Buff}|Subs]);
+extract_sub(<<" ", Rest/binary>>, {?multiple, Buff}, Subs) ->
+    extract_sub(Rest, [], [{?multiple, Buff}|Subs]);
+extract_sub(<<" ", Rest/binary>>, {?amperaphost, Buff}, Subs) ->
+    extract_sub(Rest, [], [{?amperaphost, Buff}|Subs]);
+extract_sub(<<" ", Rest/binary>>, {?multipleaphost, Buff}, Subs) ->
+    extract_sub(Rest, [], [{?multipleaphost, Buff}|Subs]);
 extract_sub(<<" ", Rest/binary>>, Buf, Subs) ->
-    extract_sub(Rest, [], [Buf|Subs]);
+    extract_sub(Rest, [], [lists:reverse(Buf)|Subs]);
 extract_sub(<<"[", Rest/binary>>, _Buf, Subs) ->
     {ok, Brackets, Rest1} = extract_bracket(Rest, [], []),
-    extract_sub(Rest1, [], [Brackets|Subs]).
+    extract_sub(Rest1, {?multiple, lists:reverse(Brackets)}, Subs);
+extract_sub(<<"'", Rest/binary>>, {?ampers, Buf}, Subs) ->
+    extract_sub(Rest, {?amperaphost, lists:reverse(Buf)}, Subs);
+extract_sub(<<"'", Rest/binary>>, {?multiple, Buf}, Subs) ->
+    extract_sub(Rest, {?multipleaphost, Buf}, Subs);
+extract_sub(<<"'", Rest/binary>>, Buff, Subs) ->
+    extract_sub(Rest, {?aphost, lists:reverse(Buff)}, Subs);
+extract_sub(<<"@", Rest/binary>>, _Buff, Subs) ->
+    extract_sub(Rest, {?ampers, []}, Subs);
+extract_sub(<<C,Rest/binary>>, {?ampers, Buf}, Subs) ->
+    extract_sub(Rest, {?ampers, [C|Buf]}, Subs);
+extract_sub(<<C,Rest/binary>>, Buf, Subs) ->
+    extract_sub(Rest, [C|Buf], Subs).
 
 %% extract "by YYY" part
 extract_by(<<" ", Rest/binary>>, [], [] ) ->
@@ -116,4 +144,6 @@ extract_bracket(<<"]", Rest/binary>>, Buf, Ligas) ->
 extract_bracket(<<" ", Rest/binary>>, [], []) ->
     extract_bracket(Rest, [], []);
 extract_bracket(<<" ", Rest/binary>>, Buf, Ligas) ->
-    extract_bracket(Rest, [], [lists:reverse(Buf)|Ligas]).
+    extract_bracket(Rest, [], [lists:reverse(Buf)|Ligas]);
+extract_bracket(<<C, Rest/binary>>, Buf, Ligas) ->
+    extract_bracket(Rest, [C|Buf], Ligas).
