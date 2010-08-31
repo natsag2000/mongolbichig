@@ -17,5 +17,7 @@ start() ->
               [FFolder, EFolder, Filename]),
     {ok, {feature, Name, Features}} = extract_feature(Filename),
     io:format("Feature: ~p, feature count:~p~n", [Name, length(Features)]),
-    export_dot({feature, Name, Features}, FFolder, EFolder).
+    export_dot({feature, Name, Features},
+               filename:join([Root, FFolder]),
+               filename:join([Root, EFolder])).
 
