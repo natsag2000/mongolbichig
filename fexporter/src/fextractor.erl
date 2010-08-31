@@ -13,8 +13,7 @@
 extract_feature(File) ->
     {ok, Content} = file:read_file(File),
     {ok, BContent, Feature} = extract_feature_body(Content, [], [], #feature{}, start),
-    {ok, FeatureLast} = extract_feature_lookups(list_to_binary(BContent), [], #lookup{}, Feature, start),
-    FeatureLast.
+    extract_feature_lookups(list_to_binary(BContent), [], #lookup{}, Feature, start).
 %% ----------------------------------------------------------------
 %% extract feature body
 %% ----------------------------------------------------------------
@@ -127,13 +126,21 @@ extract_sub(<<C,Rest/binary>>, Buf, Subs) ->
 %% extract "by YYY" part
 extract_by(<<" ", Rest/binary>>, [], [] ) ->
     extract_by(Rest, [], []);
+extract_by(<<";", Rest/binary>>, {?ampers, Buf}, Bys) ->
+    {ok, lists:reverse([{?ampers, lists:reverse(Buf)} | Bys]), Rest};
+extract_by(<<";", Rest/binary>>, {?multiple, Buf}, Bys) ->
+    {ok, lists:reverse([{?multiple, Buf} | Bys]), Rest};
 extract_by(<<";", Rest/binary>>, Buf, Bys) ->
-   {ok, lists:reverse([lists:reverse(Buf) | Bys]), Rest };
+    {ok, lists:reverse([lists:reverse(Buf) | Bys]), Rest };
+extract_by(<<" ", Rest/binary>>, {?ampers, Buf}, Bys) ->
+    extract_by(Rest, [], [{?ampers, lists:reverse(Buf)}|Bys]);
+extract_by(<<" ", Rest/binary>>, {?multiple, Buf}, Bys) ->
+    extract_by(Rest, [], [{?multiple, lists:reverse(Buf)}|Bys]);
 extract_by(<<" ", Rest/binary>>, Buf, Bys) ->
     extract_by(Rest, [], [lists:reverse(Buf)|Bys]);
 extract_by(<<"[", Rest/binary>>, _Buf, Bys) ->
     {ok, Brackets, Rest1} = extract_bracket(Rest, [], []),
-    extract_by(Rest1, [], [Brackets|Bys]);
+    extract_by(Rest1, {?multiple, Brackets}, Bys);
 extract_by(<<C, Rest/binary>>, Buf, Bys) ->
     extract_by(Rest, [C|Buf], Bys).
 
