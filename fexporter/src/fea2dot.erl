@@ -1,11 +1,12 @@
 -module(fea2dot).
 -compile([export_all]).
--import(utils, [create_folder/1, read_features/1]).
+-import(utils, [create_folder/1, read_class/1]).
 -include("../include/features.hrl").
 -include("../include/fea2dot.hrl").
 
-export_dot({feature, Name, Lookups}, ClassFolder, TargetFolder) ->
-    io:format("Feature: ~p, feature count:~p~n", [Name, length(Lookups)]),
+export_dot(Test, ClassFolder, TargetFolder) ->
+    {feature, Name, Lookups} = Test,
+    io:format("FEAture: ~p, feature count:~p~n", [Name, length(Lookups)]),
     Folder = filename:join([TargetFolder, Name]),
     io:format("Creating: ~p~n", [Folder]),
     {ok, created} = create_folder(Folder),
@@ -14,20 +15,20 @@ export_dot({feature, Name, Lookups}, ClassFolder, TargetFolder) ->
 
 export_dot_lookup([], _CF, Buf) ->
     {ok, lists:reverse(Buf)};
-export_dot_lookup([C|Rest], CF, Buf) ->
-    Name = C#lookup.name,
-    Tables = C#lookup.lookups,
+export_dot_lookup([C=#lookup{name=Name, lookups=Tables}|Rest], CF, Buf) ->
+    %Name = C#lookup.name,
+    %Tables = C#lookup.lookups,
     io:format("Count: ~p~n", [length(Tables)]),
-    {dot, Dot} = generate_dot(Tables, CF, []),
+    {ok, Dot} = generate_dot(Tables, CF, []),
     export_dot_lookup(Rest, CF, [{dot, Dot}|Buf]).
 
 %% generate dot file
 generate_dot([], _CF, Buf) ->
     {dot, Buf};
-generate_dot([C=#lookuptable{sub=Subs, by=Bys}|Rest], CF, Buf) ->
-    io:format("~p", [length(C)]),
-    %Subs = C#lookuptable.sub,
-    %Bys = C#lookuptable.by,
+generate_dot([C|Rest], CF, Buf) ->
+    Subs = C#lookuptable.sub,
+    Bys = C#lookuptable.by,
+    io:format("Subs count: ~p", [length(Bys)]),
     {ok, ESubs} = generate(Subs, CF),
     generate(Bys, CF).
 
@@ -37,11 +38,11 @@ generate(Glyphs, CF) ->
 generate([], _CF, Buf) ->
     {ok, lists:reverse(Buf)};
 generate([{?ampers, Feature}|Rest], CF, Buf) ->
-    {ok, CGlyphs} = read_features(filename:join([CF,Feature])),
+    {ok, CGlyphs} = read_class(filename:join([CF,Feature])),
     {ok, CGlyphs1} = generate_multi(CGlyphs, false),
     generate(Rest, CF, [{multi, CGlyphs1} | Buf]);
 generate([{?amperaphost, Feature}|Rest], CF, Buf) ->
-    {ok, CGlyphs} = read_features(filename:join([CF,Feature])),
+    {ok, CGlyphs} = read_class(filename:join([CF,Feature])),
     {ok, CGlyphs1} = generate_multi(CGlyphs, true),
     generate(Rest, CF, [{multi, CGlyphs1} | Buf]);
 generate([{?multiple, Features}|Rest], CF, Buf) ->
@@ -54,6 +55,9 @@ generate([{?aphost, Feature}|Rest], CF, Buf) ->
     {ok, Glyph} = general_dotglyph(Feature, true),
     generate(Rest, CF, [Glyph|Buf]);
 generate([{?normal, Feature}|Rest], CF, Buf) ->
+    {ok, Glyph} = general_dotglyph(Feature, false),
+    generate(Rest, CF, [Glyph|Buf]);
+generate([Feature|Rest], CF, Buf) ->
     {ok, Glyph} = general_dotglyph(Feature, false),
     generate(Rest, CF, [Glyph|Buf]).
 

@@ -57,9 +57,10 @@ extract_feature_lookups(<<";", Rest/binary>>, _Buf, _Lookup, Feature, name) ->
 extract_feature_lookups(<<C, Rest/binary>>, Buf, Lookup, Feature, name) ->
     extract_feature_lookups(Rest, [C|Buf], Lookup, Feature, name);
 extract_feature_lookups(<<"}", Rest/binary>>, Buf, Lookup, Feature, body) ->
-    {ok, Subtables} = extract_feature_table(lists:reverse(Buf)),
+    {ok, Subtables} = extract_feature_table(lists:reverse(Buf)), %% !!!!
     Tables = Lookup#lookup.lookups,
-    NewLookup=Lookup#lookup{lookups=lists:reverse([Subtables|Tables])},
+    NewList = add_to_list(Subtables, Tables),
+    NewLookup=Lookup#lookup{lookups=lists:reverse(NewList)},
     NewFeatureLookups = Feature#feature.lookups,
     NewFeature = Feature#feature{lookups=lists:reverse([NewLookup|NewFeatureLookups])},
     extract_feature_lookups(Rest, [], #lookup{}, NewFeature, start);
@@ -70,6 +71,10 @@ extract_feature_lookups(<<C,Rest/binary>>, Buf, Lookup, Feature, body) ->
 %%extract_feature_lookups(<<_C,Rest/binary>>, Buf, Lookup, Feature, end_name) ->
 %%    extract_feature_lookups(Rest, Buf, Lookup, Feature, end_name).
 
+add_to_list(List, []) ->
+    List;
+add_to_list(List, L1) ->
+    [List|L1].
 %% ----------------------------------------------------------------
 %% extract substitution table
 %% ----------------------------------------------------------------
@@ -84,7 +89,7 @@ extract_sub_by(<<"sub", Rest/binary>>, LTable) ->
     {ok, Subpart, Rest1} = extract_sub(Rest, [], []),
     {ok, Byspart, Rest2} = extract_by(Rest1, [], []),
     Lkup = #lookuptable{sub=Subpart, by=Byspart},
-    extract_sub_by(Rest2, [Lkup | LTable]);
+    extract_sub_by(Rest2, [ Lkup | LTable]);
 extract_sub_by(<<>>, LTable) ->
     {ok, lists:reverse(LTable)};
 extract_sub_by(<<_C, Rest/binary>>, LTable) ->

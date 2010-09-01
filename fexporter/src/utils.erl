@@ -13,6 +13,7 @@ create_folder(FPath) ->
 
 %% read class files and return a list of glyphs
 read_class(FPath) ->
+    io:format("Reading class:~p~n", [FPath]),
     {ok, Binary} = file:read_file(FPath),
     read_features(Binary).
 read_features(Bin) ->

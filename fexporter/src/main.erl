@@ -11,6 +11,7 @@ start() ->
     {ok, Terms} = read(?configfile),
     {ok, Root } = get(root_folder, Terms),
     {ok, FFolder} = get(feature_folder, Terms),
+    {ok, CFolder} = get(class_folder, Terms),
     {ok, EFolder} =get(export_folder, Terms),
     Filename = filename:join([ Root, FFolder, ?testfile]),
     io:format("FFolder: ~p~nEFolder: ~p~nFilename: ~p~n",
@@ -18,6 +19,6 @@ start() ->
     {ok, {feature, Name, Features}} = extract_feature(Filename),
     io:format("Feature: ~p, feature count:~p~n", [Name, length(Features)]),
     export_dot({feature, Name, Features},
-               filename:join([Root, FFolder]),
+               filename:join([Root, CFolder]),
                filename:join([Root, EFolder])).
 
