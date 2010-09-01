@@ -106,7 +106,7 @@ extract_sub(<<" ", Rest/binary>>, {?amperaphost, Buff}, Subs) ->
 extract_sub(<<" ", Rest/binary>>, {?multipleaphost, Buff}, Subs) ->
     extract_sub(Rest, [], [{?multipleaphost, Buff}|Subs]);
 extract_sub(<<" ", Rest/binary>>, Buf, Subs) ->
-    extract_sub(Rest, [], [lists:reverse(Buf)|Subs]);
+    extract_sub(Rest, [], [{?normal, lists:reverse(Buf)}|Subs]);
 extract_sub(<<"[", Rest/binary>>, _Buf, Subs) ->
     {ok, Brackets, Rest1} = extract_bracket(Rest, [], []),
     extract_sub(Rest1, {?multiple, lists:reverse(Brackets)}, Subs);
@@ -137,7 +137,7 @@ extract_by(<<" ", Rest/binary>>, {?ampers, Buf}, Bys) ->
 extract_by(<<" ", Rest/binary>>, {?multiple, Buf}, Bys) ->
     extract_by(Rest, [], [{?multiple, lists:reverse(Buf)}|Bys]);
 extract_by(<<" ", Rest/binary>>, Buf, Bys) ->
-    extract_by(Rest, [], [lists:reverse(Buf)|Bys]);
+    extract_by(Rest, [], [{?normal, lists:reverse(Buf)}|Bys]);
 extract_by(<<"[", Rest/binary>>, _Buf, Bys) ->
     {ok, Brackets, Rest1} = extract_bracket(Rest, [], []),
     extract_by(Rest1, {?multiple, Brackets}, Bys);
@@ -151,6 +151,6 @@ extract_bracket(<<"]", Rest/binary>>, Buf, Ligas) ->
 extract_bracket(<<" ", Rest/binary>>, [], []) ->
     extract_bracket(Rest, [], []);
 extract_bracket(<<" ", Rest/binary>>, Buf, Ligas) ->
-    extract_bracket(Rest, [], [lists:reverse(Buf)|Ligas]);
+    extract_bracket(Rest, [], [{?normal, lists:reverse(Buf)}|Ligas]);
 extract_bracket(<<C, Rest/binary>>, Buf, Ligas) ->
     extract_bracket(Rest, [C|Buf], Ligas).

@@ -9,12 +9,12 @@
           lookupflag="",
           lookups=[]
          }).
+
 -record(lookuptable,
         {
           sub=[],
           by=[]
          }).
-
 
 -define(ampers, ampers).
 -define(multiple, multiple).
