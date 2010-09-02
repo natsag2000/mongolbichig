@@ -26,4 +26,3 @@ read_features(<<"\n", Rest/binary>>, Buf, Features) ->
     read_features(Rest, [], [lists:reverse(Buf)|Features]);
 read_features(<<C, Rest/binary>>, Buf, Features) ->
     read_features(Rest, [C|Buf], Features).
-

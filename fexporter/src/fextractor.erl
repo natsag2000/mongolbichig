@@ -156,6 +156,7 @@ extract_bracket(<<"]", Rest/binary>>, Buf, Ligas) ->
 extract_bracket(<<" ", Rest/binary>>, [], []) ->
     extract_bracket(Rest, [], []);
 extract_bracket(<<" ", Rest/binary>>, Buf, Ligas) ->
-    extract_bracket(Rest, [], [{?normal, lists:reverse(Buf)}|Ligas]);
+    %%extract_bracket(Rest, [], [{?normal, lists:reverse(Buf)}|Ligas]);
+    extract_bracket(Rest, [], [lists:reverse(Buf)|Ligas]);
 extract_bracket(<<C, Rest/binary>>, Buf, Ligas) ->
     extract_bracket(Rest, [C|Buf], Ligas).

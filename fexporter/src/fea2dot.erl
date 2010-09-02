@@ -4,33 +4,31 @@
 -include("../include/features.hrl").
 -include("../include/fea2dot.hrl").
 
-export_dot(Test, ClassFolder, TargetFolder) ->
-    {feature, Name, Lookups} = Test,
-    io:format("FEAture: ~p, feature count:~p~n", [Name, length(Lookups)]),
-    Folder = filename:join([TargetFolder, Name]),
-    io:format("Creating: ~p~n", [Folder]),
-    {ok, created} = create_folder(Folder),
-    export_dot_lookup(Lookups, ClassFolder, []).
+export_dot({feature, Name, Lookups}, ClassFolder, TargetFolder) ->
+    ExportFolder = filename:join([TargetFolder, Name]),
+    {ok, created} = create_folder(ExportFolder),
+    export_dot_lookup(Lookups, ClassFolder, ExportFolder).
 
-
-export_dot_lookup([], _CF, Buf) ->
-    {ok, lists:reverse(Buf)};
-export_dot_lookup([C=#lookup{name=Name, lookups=Tables}|Rest], CF, Buf) ->
-    %Name = C#lookup.name,
-    %Tables = C#lookup.lookups,
-    io:format("Count: ~p~n", [length(Tables)]),
-    {ok, Dot} = generate_dot(Tables, CF, []),
-    export_dot_lookup(Rest, CF, [{dot, Dot}|Buf]).
+export_dot_lookup([], _CF, _EF) ->
+    io:format("FINISH"),
+    {ok, done};
+export_dot_lookup([_C=#lookup{name=Name, lookups=Tables}|Rest], CF, EF) ->
+    {ok, Dots} = generate_dot(Tables, CF, []),
+    {ok, done} = write_dot(Dots, filename:join([EF, Name])),
+    export_dot_lookup(Rest, CF, EF).
 
 %% generate dot file
 generate_dot([], _CF, Buf) ->
-    {dot, Buf};
+    {ok, lists:reverse(Buf)};
 generate_dot([C|Rest], CF, Buf) ->
     Subs = C#lookuptable.sub,
     Bys = C#lookuptable.by,
-    io:format("Subs count: ~p", [length(Bys)]),
     {ok, ESubs} = generate(Subs, CF),
-    generate(Bys, CF).
+    {ok, EBys} = generate(Bys, CF),
+    case length(Buf) of
+        0 -> generate_dot(Rest, CF, [{dot, ESubs, EBys}]);
+        _ -> generate_dot(Rest, CF, [{dot, ESubs, EBys}|Buf])
+    end.
 
 %% generate export ready records for glyph names and classes
 generate(Glyphs, CF) ->
@@ -94,3 +92,25 @@ normalize_name("."++Rest, Acc) ->
     normalize_name(Rest, Acc);
 normalize_name([C|Rest], Acc) ->
     normalize_name(Rest, [C|Acc]).
+
+%% write to dot file
+write_dot(Dots, Filename) ->
+    {ok, FileDescription} = file:open(Filename, [write]),
+    {ok, done} = write_dot_head(FileDescription),
+    {ok, done} = write_dotI(Dots, FileDescription),
+    {ok, done} = write_dot_footer(FileDescription),
+    file:close(FileDescription),
+    {ok, done}.
+
+write_dotI([], _FD) ->
+    {ok, done};
+write_dotI([{dot, Bys, Subs}|Rest], FD) ->
+    {ok, done} = write_dot_file(Subs, FD),
+%%%% HERE MUST DOT FORMATED!!
+    write_dotI(Rest, FD).
+
+write_dot_file([], _FD) ->
+    {ok, done};
+write_dot_file([H|T], FD) ->
+    ok = io:format(FD, "Test ~w", [H]),
+    write_dot_file(T, FD).
