@@ -1,14 +1,13 @@
 -module(main).
 -compile([export_all]).
--import(config, [read/1, get/2]).
+-import(config, [read/0, get/2]).
 -import(fextractor, [extract_feature/1]).
 -import(fea2dot, [export_dot/3]).
 
--define(configfile, "../config/application.cfg").
 -define(testfile, "calt").
 
 start() ->
-    {ok, Terms} = read(?configfile),
+    {ok, Terms} = read(),
     {ok, Root } = get(root_folder, Terms),
     {ok, FFolder} = get(feature_folder, Terms),
     {ok, CFolder} = get(class_folder, Terms),
