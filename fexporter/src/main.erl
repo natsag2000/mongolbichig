@@ -44,5 +44,6 @@ class_export([], _, _, _) ->
     {ok, done};
 class_export([Filename|Rest], R, CF, EF) ->
     CFile = filename:join([R,CF,Filename]),
-    {ok, done} = export_class_dot(CFile, EF),
+    ExFolder = filename:join([R,EF]),
+    {ok, done} = export_class_dot(CFile, ExFolder),
     class_export(Rest, R, CF, EF).

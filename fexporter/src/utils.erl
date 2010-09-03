@@ -10,6 +10,7 @@ create_folder(FPath) ->
         {error, eexist} ->
             {ok, created};
         Error ->
+            io:format("~p",[Error]),
             Error
     end.
 
