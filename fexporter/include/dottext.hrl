@@ -27,6 +27,7 @@
 -define(dot_subgraph(V), ?f(io_lib:format("  subgraph ~p {\n", [V]))).
 -define(dot_sub_label(V), ?f(io_lib:format("    label=~p;\n", [V]))).
 -define(dot_labelloc, ?f("    labelloc=b;\n")).
+-define(dot_labelloc_top, ?f("    labelloc=t;\n")).
 -define(dot_icon_name(V), ?f(io_lib:format("    ~p};\n", [V]))).
 -define(dot_icon(V1,V2), ?f(io_lib:format("    ~p [ shape=box, style=invisible, shapefile=~p];\n", [V1,V2]))).
 

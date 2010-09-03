@@ -1,6 +1,6 @@
 -module(fea2dot).
 -compile([export_all]).
--import(utils, [create_folder/1, read_class/1]).
+-import(utils, [create_folder/1, read_class/1, get_uniq_name/2]).
 -import(config, [get_glyph_path/0]).
 -include("../include/features.hrl").
 -include("../include/fea2dot.hrl").
@@ -16,7 +16,7 @@ export_dot_lookup([], _CF, _EF) ->
     {ok, done};
 export_dot_lookup([_C=#lookup{name=Name, lookups=Tables}|Rest], CF, EF) ->
     {ok, Dots} = generate_dot(Tables, CF, []),
-    {ok, done} = write_dot(Dots, filename:join([EF, Name])),
+    {ok, done} = write_dot(Dots, filename:join([EF, Name++".dot"])),
     export_dot_lookup(Rest, CF, EF).
 
 %% generate dot file
@@ -25,75 +25,77 @@ generate_dot([], _CF, Buf) ->
 generate_dot([C|Rest], CF, Buf) ->
     Subs = C#lookuptable.sub,
     Bys = C#lookuptable.by,
-    {ok, ESubs} = generate(Subs, CF),
-    {ok, EBys} = generate(Bys, CF),
+    {ok, ESubs, IconList} = generate(Subs, CF, []),
+    {ok, EBys, _IList} = generate(Bys, CF, IconList),
     case length(Buf) of
         0 -> generate_dot(Rest, CF, [{dot, ESubs, EBys}]);
         _ -> generate_dot(Rest, CF, [{dot, ESubs, EBys}|Buf])
     end.
 
 %% generate export ready records for glyph names and classes
-generate(Glyphs, CF) ->
-    generate(Glyphs, CF, []).
-generate([], _CF, Buf) ->
-    {ok, lists:reverse(Buf)};
-generate([{?ampers, Feature}|Rest], CF, Buf) ->
+generate(Glyphs, CF, IList) ->
+    generate(Glyphs, CF, [], IList).
+generate([], _CF, Buf, IList) ->
+    {ok, lists:reverse(Buf), IList};
+generate([{?ampers, Feature}|Rest], CF, Buf, IList) ->
     {ok, CGlyphs} = read_class(filename:join([CF,Feature])),
-    {ok, CGlyphs1} = generate_multi(CGlyphs, false),
-    generate(Rest, CF, [{multi, CGlyphs1} | Buf]);
-generate([{?amperaphost, Feature}|Rest], CF, Buf) ->
+    {ok, NList, CGlyphs1} = generate_multi(CGlyphs, false, IList),
+    generate(Rest, CF, [{class, Feature, CGlyphs1} | Buf], NList);
+generate([{?amperaphost, Feature}|Rest], CF, Buf, IList) ->
     {ok, CGlyphs} = read_class(filename:join([CF,Feature])),
-    {ok, CGlyphs1} = generate_multi(CGlyphs, true),
-    generate(Rest, CF, [{multi, CGlyphs1} | Buf]);
-generate([{?multiple, Features}|Rest], CF, Buf) ->
-    {ok, Multiglyphs} = generate_multi(Features, false),
-    generate(Rest, CF, [{multi, Multiglyphs} | Buf]);
-generate([{?multipleaphost, Features}|Rest], CF, Buf) ->
-    {ok, Multiglyphs} = generate_multi(Features, true),
-    generate(Rest, CF, [{multi, Multiglyphs} | Buf]);
-generate([{?aphost, Feature}|Rest], CF, Buf) ->
-    {ok, Glyph} = general_dotglyph(Feature, true),
-    generate(Rest, CF, [Glyph|Buf]);
-generate([{?normal, Feature}|Rest], CF, Buf) ->
-    {ok, Glyph} = general_dotglyph(Feature, false),
-    generate(Rest, CF, [Glyph|Buf]);
-generate([Feature|Rest], CF, Buf) ->
-    {ok, Glyph} = general_dotglyph(Feature, false),
-    generate(Rest, CF, [Glyph|Buf]).
+    {ok, NList, CGlyphs1} = generate_multi(CGlyphs, true, IList),
+    generate(Rest, CF, [{class, Feature, CGlyphs1} | Buf], NList);
+generate([{?multiple, Features}|Rest], CF, Buf, IList) ->
+    {ok, NList, Multiglyphs} = generate_multi(Features, false, IList),
+    generate(Rest, CF, [{multi, Multiglyphs} | Buf], NList);
+generate([{?multipleaphost, Features}|Rest], CF, Buf, IList) ->
+    {ok, NList, Multiglyphs} = generate_multi(Features, true, IList),
+    generate(Rest, CF, [{multi, Multiglyphs} | Buf], NList);
+generate([{?aphost, Feature}|Rest], CF, Buf, IList) ->
+    {ok, NList, Glyph} = general_dotglyph(Feature, true, IList),
+    generate(Rest, CF, [Glyph|Buf], NList);
+generate([{?normal, Feature}|Rest], CF, Buf, IList) ->
+    {ok, NList, Glyph} = general_dotglyph(Feature, false, IList),
+    generate(Rest, CF, [Glyph|Buf], NList);
+generate([Feature|Rest], CF, Buf, IList ) ->
+    {ok, NList, Glyph} = general_dotglyph(Feature, false, IList),
+    generate(Rest, CF, [Glyph|Buf], NList).
 
 %% generate dotglyph record from glyph name
-general_dotglyph(Feature, false) ->
-    {ok, Norm} = normalize_name(Feature),
-    {ok, #dotglyph{cluster_name=?cluster_name(Norm),
-              label=Feature,
-              icon_name=?icon_name(Norm)}};
+general_dotglyph(Feature, false, IList) ->
+    {ok, Norm, NList} = normalize_name(Feature, IList),
+    {ok, NList, #dotglyph{cluster_name=?cluster_name(Norm),
+                          label=Feature,
+                          icon_name=?icon_name(Norm)}};
 
-general_dotglyph(Feature, true) ->
-    {ok, Norm} = normalize_name(Feature),
-    {ok, #dotglyph{cluster_name=?cluster_name(Norm),
-              label=Feature,
-              icon_name=?icon_name(Norm),
-              is_aphost=true}}.
+general_dotglyph(Feature, true, IList) ->
+    {ok, Norm, NList} = normalize_name(Feature, IList),
+    {ok, NList, #dotglyph{cluster_name=?cluster_name(Norm),
+                          label=Feature,
+                          icon_name=?icon_name(Norm),
+                          is_aphost=true}}.
 
 %% generate dotglyph record from multiple glyph names
-generate_multi(Features, Is_Colored) ->
-    generate_multi(Features, [], Is_Colored).
+generate_multi(Features, Is_Colored, IList) ->
+    generate_multi(Features, [], Is_Colored, IList).
 
-generate_multi([], Buf, _Colored) ->
-    {ok, lists:reverse(Buf)};
-generate_multi([C|Rest], Buf, Colored) ->
-    {ok, Glyph} = general_dotglyph(C, Colored),
-    generate_multi(Rest, [Glyph|Buf], Colored).
+generate_multi([], Buf, _Colored, IList) ->
+    {ok, IList, lists:reverse(Buf)};
+generate_multi([C|Rest], Buf, Colored, IList) ->
+    {ok, NList, Glyph} = general_dotglyph(C, Colored, IList),
+    generate_multi(Rest, [Glyph|Buf], Colored, NList).
 
 %% normalize name
-normalize_name(Name) ->
-    normalize_name(Name, []).
-normalize_name([], Acc) ->
-    {ok, lists:reverse(Acc)};
-normalize_name("."++Rest, Acc) ->
-    normalize_name(Rest, Acc);
-normalize_name([C|Rest], Acc) ->
-    normalize_name(Rest, [C|Acc]).
+normalize_name(Name, IList) ->
+    normalize_name(Name, [], IList).
+normalize_name([], Acc, IList) ->
+    NName = lists:reverse(Acc),
+    {ok, UName, NList} = get_uniq_name(NName, IList),
+    {ok, UName, NList};
+normalize_name("."++Rest, Acc, IList) ->
+    normalize_name(Rest, Acc, IList);
+normalize_name([C|Rest], Acc, IList) ->
+    normalize_name(Rest, [C|Acc], IList).
 
 %% write to dot file
 write_dot(Dots, Filename) ->
@@ -135,26 +137,45 @@ write_dot_nodes({multi, Glyphs}, FD) ->
     FirstGlyph=lists:nth(1, Glyphs),
     NewSubgraphName = lists:append("sub_", FirstGlyph#dotglyph.cluster_name),
     ok = io:format(FD, ?dot_subgraph(NewSubgraphName), []),
+    ok = io:format(FD, ?dot_sub_label(lists:flatten("LIST")), []),
+    ok = io:format(FD, ?dot_compound, []),
+    ok = io:format(FD, ?dot_rankdir_tb, []),
+    ok = io:format(FD, ?dot_labelloc_top, []),
+    {ok, done} = write_dot_subgraphs(Glyphs, FD),
+    ok = io:format(FD, ?dot_end_graph, []),
+    {ok, done};
+%% class file
+write_dot_nodes({class, CName, Glyphs}, FD) ->
+    FirstGlyph=lists:nth(1, Glyphs),
+    NewSubgraphName = lists:append("sub_", FirstGlyph#dotglyph.cluster_name),
+    ok = io:format(FD, ?dot_subgraph(NewSubgraphName), []),
+    ok = io:format(FD, ?dot_sub_label("@"++CName), []),
+    ok = io:format(FD, ?dot_compound, []),
+    ok = io:format(FD, ?dot_rankdir_tb, []),
+    ok = io:format(FD, ?dot_labelloc_top, []),
     {ok, done} = write_dot_subgraphs(Glyphs, FD),
     ok = io:format(FD, ?dot_end_graph, []),
     {ok, done}.
 
 %% dot connection nodes
 write_dot_connect(S, B, FD) ->
-    {ok, L} = read_first_element(S),
-    {ok, L1} = read_first_element(B),
+    {ok, L} = read_first_elements(S),
+    {ok, L1} = read_first_elements(B),
     write_connect(lists:append(L, L1), FD).
 
 %% read only first element
-read_first_element(List) ->
-    read_first_element(List, []).
-read_first_element([], Acc) ->
-    lists:reverse(Acc);
-read_first_element([_H = #dotglyph{icon_name=IconName}|T], Acc) ->
-    read_first_element(T, [IconName|Acc]);
-read_first_element([{multi, Glyph}|T], Acc) ->
+read_first_elements(List) ->
+    read_first_elements(List, []).
+read_first_elements([], Acc) ->
+    {ok, lists:reverse(Acc)};
+read_first_elements([_H = #dotglyph{icon_name=IconName}|T], Acc) ->
+    read_first_elements(T, [IconName|Acc]);
+read_first_elements([{class, _CName, Glyph}|T], Acc) ->
     F = lists:nth(1, Glyph),
-    read_first_element(T, [F#dotglyph.icon_name|Acc]).
+    read_first_elements(T, [F#dotglyph.icon_name|Acc]);
+read_first_elements([{multi, Glyph}|T], Acc) ->
+    F = lists:nth(1, Glyph),
+    read_first_elements(T, [F#dotglyph.icon_name|Acc]).
 
 %% make dot connection from list
 write_connect([H|T], FD) when length(T) == 1 ->
