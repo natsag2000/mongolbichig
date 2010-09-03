@@ -1,16 +1,49 @@
 -module(fea2dot).
 -compile([export_all]).
--import(utils, [create_folder/1, read_class/1, get_uniq_name/2]).
+-import(utils, [create_folder/1, get_list_from_file/1, get_uniq_name/2]).
 -import(config, [get_glyph_path/0]).
 -include("../include/features.hrl").
 -include("../include/fea2dot.hrl").
 -include("../include/dottext.hrl").
 
+-define(new_name(N,C), lists:flatten(N++"_"++integer_to_list(C))).
+
+%% API zone
+%% ========
 export_dot({feature, Name, Lookups}, ClassFolder, TargetFolder) ->
     ExportFolder = filename:join([TargetFolder, Name]),
     {ok, created} = create_folder(ExportFolder),
     export_dot_lookup(Lookups, ClassFolder, ExportFolder).
 
+
+export_class_dot(ClassFile, ExportFolder) ->
+    ExportClassFolder = lists:flatten(filename:join([ExportFolder, "classes"])),
+    {ok, created} = create_folder(ExportClassFolder),
+    {ok, Glyphs} = get_list_from_file(ClassFile),
+    Basename = filename:basename(ClassFile),
+    {ok, GroupList} = split_glyph_list(10, Glyphs, Basename),
+    io:format("~p~n", [GroupList]),
+    {ok, done}.
+
+%% Local zone
+%% ==========
+
+%% split a list of glyphs with N
+split_glyph_list(N, Glyphs, Name) ->
+    split_glyph_list(N, Glyphs, [], Name, 0).
+split_glyph_list(_N, [], Buf, _Name, _Counter) when length(Buf) > 0 ->
+    {ok, lists:reverse(Buf)};
+split_glyph_list(N, Glyphs, _Buf, Name, 0) when N > length(Glyphs) ->
+    {ok, [{?group_glyph, Name, Glyphs}]};
+split_glyph_list(N, Glyphs, Buf, Name, Counter) when N > length(Glyphs) ->
+    {ok, lists:reverse([{?group_glyph, ?new_name(Name, Counter), Glyphs}|Buf])};
+split_glyph_list(N, Glyphs, Buf, Name, Counter) ->
+    {L1, L2} = lists:split(N, Glyphs),
+    NewCounter = Counter + 1,
+    split_glyph_list(N, L2,
+                     [{?group_glyph, ?new_name(Name, NewCounter), L1}|Buf],
+                     Name, NewCounter).
+%% lookups
 export_dot_lookup([], _CF, _EF) ->
     io:format("FINISH"),
     {ok, done};
@@ -38,11 +71,11 @@ generate(Glyphs, CF, IList) ->
 generate([], _CF, Buf, IList) ->
     {ok, lists:reverse(Buf), IList};
 generate([{?ampers, Feature}|Rest], CF, Buf, IList) ->
-    {ok, CGlyphs} = read_class(filename:join([CF,Feature])),
+    {ok, CGlyphs} = get_list_from_file(filename:join([CF,Feature])),
     {ok, NList, CGlyphs1} = generate_multi(CGlyphs, false, IList),
     generate(Rest, CF, [{class, Feature, CGlyphs1} | Buf], NList);
 generate([{?amperaphost, Feature}|Rest], CF, Buf, IList) ->
-    {ok, CGlyphs} = read_class(filename:join([CF,Feature])),
+    {ok, CGlyphs} = get_list_from_file(filename:join([CF,Feature])),
     {ok, NList, CGlyphs1} = generate_multi(CGlyphs, true, IList),
     generate(Rest, CF, [{class, Feature, CGlyphs1} | Buf], NList);
 generate([{?multiple, Features}|Rest], CF, Buf, IList) ->

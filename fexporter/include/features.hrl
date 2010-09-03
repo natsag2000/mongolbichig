@@ -22,3 +22,4 @@
 -define(aphost, aphost).
 -define(amperaphost, amperaphost).
 -define(multipleaphost, multipleaphost).
+-define(group_glyph, group_glyph).

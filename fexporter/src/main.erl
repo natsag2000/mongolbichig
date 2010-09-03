@@ -10,7 +10,8 @@
 
 -import(config, [read/0, get/2]).
 -import(fextractor, [extract_feature/1]).
--import(fea2dot, [export_dot/3]).
+-import(fea2dot, [export_dot/3, export_class_dot/2]).
+
 
 -define(testfile, "calt").
 
@@ -21,6 +22,8 @@ start() ->
     {ok, CFolder} = get(class_folder, Terms),
     {ok, EFolder} =get(export_folder, Terms),
     {ok, FList} = file:list_dir(filename:join(Root, FFolder)),
+    {ok, CList} = file:list_dir(filename:join(Root, CFolder)),
+    {ok, done} = class_export(CList, Root, CFolder, EFolder),
     doit(FList, Root, FFolder, CFolder, EFolder).
 
 doit([], _, _, _, _) ->
@@ -35,3 +38,11 @@ doit([Filename|Rest], R, FF, CF, EF) ->
                filename:join([R, CF]),
                filename:join([R, EF])),
     doit(Rest, R, FF, CF, EF).
+
+class_export([], _, _, _) ->
+    io:format("Classes are exported!"),
+    {ok, done};
+class_export([Filename|Rest], R, CF, EF) ->
+    CFile = filename:join([R,CF,Filename]),
+    {ok, done} = export_class_dot(CFile, EF),
+    class_export(Rest, R, CF, EF).
