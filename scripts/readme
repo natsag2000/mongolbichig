@@ -2,14 +2,17 @@
 ==============
 1. Байти үсгийн маяг доторх бүх ангилалд буй тэмдэгтээр зураг үүсгэж web/glyphs санд хадгалахаар бол дараах тушаалыг өгнө.
 
-./generateglyph.sh ../fonts/Mongolian_Baiti.ttf ../MongolianBaiti/classes/ ../web/glyphs
+   # ./generateglyph.sh ../fonts/Mongolian_Baiti.ttf ../MongolianBaiti/classes/ ../web/glyphs
 
 2. Хэрэв зөвхөн юникод юмуу нэрээр нь хандаж (жишээ нь Байти доторх "uni1820.init" тэмдэгт) зураг үүсгэнэ гэвэл дараах тушаал хангалттай
 
-./exportglyph.pe ../fonts/Mongolian_Baiti.ttf "uni1820.init"
+   # ./exportglyph.pe ../fonts/Mongolian_Baiti.ttf "uni1820.init"
 
-Анхаар: 
-- Зураг одоогоор зөвхөн bmp файл үүсгэж байгаа бөгөөд хүсвэл png зураг руу хөрвүүлж болно. Хэрэв тэгэхээр бол "convert image.bmp image.png" тушаал хангалттай.
+Анхаар:
+- Зураг одоогоор зөвхөн bmp файл үүсгэж байгаа бөгөөд хүсвэл png зураг руу хөрвүүлж болно. Хэрэв тэгэхээр бол дараах тушаал хангалттай:
+
+ # convert image.bmp image.png
+
 - Шаардлагатай суугдсан байх програмууд
   fontforge
   convert (ImageMagick)
