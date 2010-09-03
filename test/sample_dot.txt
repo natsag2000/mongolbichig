@@ -1,0 +1,26 @@
+digraph test {
+  compound=true;
+  rankdir=LR;
+  node [shape=plaintext];
+  edge [arrowsize=0, style=invisible];
+  subgraph "cluster_uni1833medi" {
+    label="uni1833.medi";
+    labelloc=b;
+    color="green";
+    "uni1833medi_icon"};
+    "uni1833medi_icon" [ shape=box, style=invisible, shapefile="/Users/nagi/nagi-gits/mongolbichig/web/images/uni1833.medi.png"];
+  subgraph "cluster_group_hkxdtcm" {
+    label="@calt22";
+    labelloc=b;
+    color="orange";
+    "group_hkxdtcm_icon"};
+    "group_hkxdtcm_icon" [ shape=box, style=invisible, shapefile="/Users/nagi/nagi-gits/mongolbichig/web/images/@calt22.png"];
+  subgraph "cluster_uni1833medivar1" {
+    label="uni1833.medivar1";
+    labelloc=b;
+    color="blue";
+    "uni1833medivar1_icon"};
+    "uni1833medivar1_icon" [ shape=box, style=invisible, shapefile="/Users/nagi/nagi-gits/mongolbichig/web/images/uni1833.medivar1.png"];
+  "uni1833medi_icon" -> "group_hkxdtcm_icon";
+  "group_hkxdtcm_icon" -> "uni1833medivar1_icon" [arrowsize=1, color=black, arrowhead="vee"];
+}
