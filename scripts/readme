@@ -16,3 +16,7 @@
 - Шаардлагатай суугдсан байх програмууд
   fontforge
   convert (ImageMagick)
+
+Зарим хэрэгтэй тушаалууд:
+========================
+hexdump -C monbaiti.ttf | less

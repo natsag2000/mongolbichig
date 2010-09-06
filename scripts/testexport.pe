@@ -1,0 +1,34 @@
+#!/usr/local/bin/fontforge
+
+## useful tips and tricks with fontforge scripting
+## ===============================================
+## prints all lookups name --
+## Print( GetLookups("GSUB"));
+
+## export feature table --
+## GenerateFeatureFile("fontfeatures");
+## -------------------------------------
+
+## generate eps glyph image --
+## Open($1);
+## Reencode("unicode");
+## Select(GLYPHNAME)
+## Export("%n.eps")
+
+#a = Array(2)
+#a[0]=24
+#a[1]=96
+Open($1);
+Reencode("unicode");
+#glyphname=$2
+
+#BitmapsAvail(a)
+
+#Generate("test.g2n", "", 0x100);
+
+Print( GetLookups("GSUB"));  #-- prints all lookups name!
+#Print (GetLookupSubtables("'calt' Contextual Alternates in Mongolian lookup 64"));
+#Print(GetLookupInfo("'medi' Medial Forms in Mongolian lookup 7"));
+GenerateFeatureFile("nagifeat");  #
+
+Quit(0);
