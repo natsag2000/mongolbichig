@@ -1,0 +1,12 @@
+<html>
+<head>
+<title>lookup</title>
+<style type=text/css>
+td {height:60px; border:solid black 1px;font-family:serif;font-size:12px}
+td.green {height:60px; border:solid green 1px;font-family:serif;font-size:12px}
+td.black {height:60px; border:solid black 1px;font-family:serif;font-size:12px}
+td.blue {height:60px; border:solid blue 1px;font-family:serif;font-size:12px}
+td.orange {height:60px; border:solid orange 1px;font-family:serif;font-size:12px}
+</style>
+</head>
+<body>

@@ -18,3 +18,8 @@ get_glyph_path() ->
     {ok, Root} = get(root_folder, Terms),
     {ok, Gpath} = get(glyph_folder, Terms),
     filename:join([Root, Gpath]).
+
+get_export_type() ->
+    {ok, Terms} = read(),
+    get(export_type, Terms).
+
