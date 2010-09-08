@@ -23,3 +23,14 @@ get_export_type() ->
     {ok, Terms} = read(),
     get(export_type, Terms).
 
+get_export_class_fullpath() ->
+    {ok, Terms} = read(),
+    {ok, Root} = get(root_folder, Terms),
+    {ok, ExFolder } = get(export_folder, Terms),
+    ExportFolder = filename:join([Root, ExFolder, "classes"]),
+    {ok, ExportFolder}.
+
+get_root_folder() ->
+    {ok, Terms} = read(),
+    get(root_folder, Terms).
+

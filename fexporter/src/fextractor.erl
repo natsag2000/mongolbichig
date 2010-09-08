@@ -146,6 +146,10 @@ extract_by(<<" ", Rest/binary>>, Buf, Bys) ->
 extract_by(<<"[", Rest/binary>>, _Buf, Bys) ->
     {ok, Brackets, Rest1} = extract_bracket(Rest, [], []),
     extract_by(Rest1, {?multiple, Brackets}, Bys);
+extract_by(<<"@", Rest/binary>>, _Buff, Bys) ->
+    extract_by(Rest, {?ampers, []}, Bys);
+extract_by(<<C, Rest/binary>>, {?ampers, Buf}, Bys) ->
+    extract_by(Rest, {?ampers, [C|Buf]}, Bys);
 extract_by(<<C, Rest/binary>>, Buf, Bys) ->
     extract_by(Rest, [C|Buf], Bys).
 

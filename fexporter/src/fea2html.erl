@@ -1,7 +1,7 @@
 -module(fea2html).
 -compile([export_all]).
 -import(utils, [create_folder/1, get_list_from_file/1]).
--import(fea2dot, [split_glyph_list/3, generate/4, generate_dot/2]).
+-import(fea2dot, [generate_dot/2]).
 -include("../include/features.hrl").
 -include("../include/fea2html.hrl").
 -include("../include/fea2dot.hrl").
@@ -26,6 +26,11 @@ export_class_html(ClassFile, ExportFolder) ->
 %% ==========
 
 write_list_glyphs_to_html(List, Basename, ExportFolder) ->
+    %% first flat write
+    FNameFlat = lists:flatten(filename:join(ExportFolder, Basename)),
+    {ok, FD1} = file:open(FNameFlat, [write]),
+    {ok, done} = write_flat(List, FD1),
+    ok = file:close(FD1),
     Filename = lists:flatten(filename:join(ExportFolder, Basename++".th")),
     {ok, FD} = file:open(Filename, [write]),
     ok = io:format(FD, ?table_head, []),
@@ -34,6 +39,11 @@ write_list_glyphs_to_html(List, Basename, ExportFolder) ->
     ok = file:close(FD),
     {ok, done}.
 
+write_flat([], _FD) ->
+    {ok, done};
+write_flat([Glyph|T], FD) ->
+    ok = io:format(FD, Glyph++"\n", []),
+    write_flat(T, FD).
 %% lookups
 export_html_lookup([], _CF, _EF) ->
     {ok, done};
@@ -74,12 +84,29 @@ write_table_row(_H=#dotglyph{cluster_name=_ClusterName,
     ok = io:format(FD, ?table_data(ImageName, Label, Color), []),
     {ok, done};
 
+write_table_row({multi, Name, Color, List}, FD) ->
+    ok = io:format(FD, ?table_list_data_hd(Color), []),
+    ok = io:format(FD, ?table_inner_head(Name), []),
+    {ok, done} = write_table_inner_row(List, FD),
+    ok = io:format(FD, ?table_inner_foot, []),
+    ok = io:format(FD, ?table_list_data_ft, []),
+    {ok, done};
+
 write_table_row(Glyph, FD) ->
     ImageName = Glyph++".png",
     ok = io:format(FD, ?table_row_start, []),
     ok = io:format(FD, ?table_data(ImageName, Glyph, "black"), []),
     ok = io:format(FD, ?table_row_end, []),
     {ok, done}.
+
+write_table_inner_row([], _FD) ->
+    {ok, done};
+write_table_inner_row([Glyph|T], FD) ->
+    ImageName = Glyph++".png",
+    ok = io:format(FD, ?table_row_start, []),
+    ok = io:format(FD, ?table_inner_data(ImageName, Glyph), []),
+    ok = io:format(FD, ?table_row_end, []),
+    write_table_inner_row(T, FD).
 
 take_name(_C = #dotglyph{icon_name=Iname}) ->
     Iname;

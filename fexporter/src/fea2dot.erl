@@ -1,7 +1,8 @@
 -module(fea2dot).
 -compile([export_all]).
 -import(utils, [create_folder/1, get_list_from_file/1, get_uniq_name/2, get_random_str/1]).
--import(config, [get_glyph_path/0]).
+-import(config, [get_glyph_path/0, get_export_type/0, get_export_class_fullpath/0]).
+-import(fea2html, [write_list_glyphs_to_html/3]).
 -include("../include/features.hrl").
 -include("../include/fea2dot.hrl").
 -include("../include/dottext.hrl").
@@ -107,21 +108,31 @@ generate(Glyphs, EF, IList, IsBy) ->
 generate([], _EF, Buf, IList, _IsBy) ->
     {ok, lists:reverse(Buf), IList};
 generate([{?ampers, Feature}|Rest], EF, Buf, IList, IsBy) ->
-    {ok, NList, CGlyph} = group_dotglyph(lists:flatten("@"++Feature), ?color_orange, IList),
+    {ok, NList, CGlyph} = make_class(Feature, get_color_if_by_multi(IsBy), IList, EF),
     generate(Rest, EF, [ CGlyph|Buf], NList, IsBy);
 generate([{?amperaphost, Feature}|Rest], EF, Buf, IList, IsBy) ->
-    {ok, NList, CGlyph} = group_dotglyph(lists:flatten("@"++Feature), ?color_green, IList),
+    {ok, NList, CGlyph} = make_class(Feature, ?color_green, IList, EF),
     generate(Rest, EF, [ CGlyph|Buf], NList, IsBy);
 generate([{?multiple, Features}|Rest], EF, Buf, IList, IsBy) ->
     Basename = ?random_name("group", 5),
-    {ok, done} = write_list_glyphs_to_dot(Features, Basename, EF),
+    case get_export_type() of
+        {ok, dot} ->
+            {ok, done} = write_list_glyphs_to_dot(Features, Basename, EF);
+        {ok, html} ->
+            {ok, done} = write_list_glyphs_to_html(Features, Basename, EF)
+    end,
     Color = get_color_if_by(IsBy),
-    {ok, NList, CGlyph} = group_dotglyph(lists:flatten(Basename), Color, IList),
+    {ok, NList, CGlyph} = make_group(Basename, Features, Color, IList),
     generate(Rest, EF, [CGlyph | Buf], NList, IsBy);
 generate([{?multipleaphost, Features}|Rest], EF, Buf, IList, IsBy) ->
     Basename = ?random_name("group", 5),
-    {ok, done} = write_list_glyphs_to_dot(Features, Basename, EF),
-    {ok, NList, CGlyph} = group_dotglyph(lists:flatten(Basename), ?color_green, IList),
+    case get_export_type() of
+        {ok, dot} ->
+            {ok, done} = write_list_glyphs_to_dot(Features, Basename, EF);
+        {ok, html} ->
+            {ok, done} = write_list_glyphs_to_html(Features, Basename, EF)
+    end,
+    {ok, NList, CGlyph} = make_group(Basename, Features, ?color_green, IList),
     generate(Rest, EF, [CGlyph | Buf], NList, IsBy);
 generate([{?aphost, Feature}|Rest], EF, Buf, IList, IsBy) ->
     {ok, NList, Glyph} = general_dotglyph(Feature, ?color_green, IList),
@@ -135,6 +146,29 @@ generate([Feature|Rest], EF, Buf, IList, IsBy) ->
     {ok, NList, Glyph} = general_dotglyph(Feature, Color, IList),
     generate(Rest, EF, [Glyph|Buf],  NList, Color).
 
+make_class(ClassName, Color, IList, EF) ->
+    case get_export_type() of
+        {ok, dot } ->
+            group_dotglyph(lists:flatten("@"++ClassName), Color, IList);
+        {ok, html} ->
+            {ok, FullClassPath} = get_export_class_fullpath(),
+            Filename = filename:join([FullClassPath, ClassName]),
+            {ok, Glyphs} = get_list_from_file(Filename),
+            {ok, IList, {multi,"@"++ClassName, Color, Glyphs}}
+    end.
+
+make_group(Name, List, Color, IList) ->
+    case get_export_type() of
+        {ok, dot} ->
+            group_dotglyph(lists:flatten(Name), Color, IList);
+        {ok, html} ->
+            {ok, IList, {multi, Name, Color, List}}
+    end.
+
+get_color_if_by_multi(true) ->
+    ?color_blue;
+get_color_if_by_multi(_) ->
+    ?color_orange.
 get_color_if_by(true) ->
     ?color_blue;
 get_color_if_by(_) ->
@@ -212,30 +246,6 @@ write_dot_nodes(_H=#dotglyph{cluster_name=ClusterName,
     ImagePath = filename:join([get_glyph_path(), Label++".png" ]),
     ok = io:format(FD, ?dot_icon(IconName, ImagePath), []),
     {ok, done}.
-% %% multi dot!!! obsolete!!!
-% write_dot_nodes({multi, Glyphs}, FD) ->
-%     FirstGlyph=lists:nth(1, Glyphs),
-%     NewSubgraphName = lists:append("sub_", FirstGlyph#dotglyph.cluster_name),
-%     ok = io:format(FD, ?dot_subgraph(NewSubgraphName), []),
-%     ok = io:format(FD, ?dot_sub_label(lists:flatten("LIST")), []),
-%     ok = io:format(FD, ?dot_compound, []),
-%     ok = io:format(FD, ?dot_rankdir_tb, []),
-%     ok = io:format(FD, ?dot_labelloc_top, []),
-%     {ok, done} = write_dot_subgraphs(Glyphs, FD),
-%     ok = io:format(FD, ?dot_end_graph, []),
-%     {ok, done};
-% %% class file obsolete !!!!
-% write_dot_nodes({class, CName, Glyphs}, FD) ->
-%     FirstGlyph=lists:nth(1, Glyphs),
-%     NewSubgraphName = lists:append("sub_", FirstGlyph#dotglyph.cluster_name),
-%     ok = io:format(FD, ?dot_subgraph(NewSubgraphName), []),
-%     ok = io:format(FD, ?dot_sub_label("@"++CName), []),
-%     ok = io:format(FD, ?dot_compound, []),
-%     ok = io:format(FD, ?dot_rankdir_tb, []),
-%     ok = io:format(FD, ?dot_labelloc_top, []),
-%     {ok, done} = write_dot_subgraphs(Glyphs, FD),
-%     ok = io:format(FD, ?dot_end_graph, []),
-%     {ok, done}.
 
 %% dot connection nodes
 write_dot_connect(S, B, FD) ->
