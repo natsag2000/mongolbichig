@@ -47,3 +47,17 @@ get_random_str(Len) ->
 random_str(0, _Chars) -> [];
 random_str(Len, Chars) -> [random_char(Chars)|random_str(Len-1, Chars)].
 random_char(Chars) -> lists:nth(random:uniform(length(Chars)), Chars).
+
+get_group_name(TargetFolder) ->
+    {ok, Files } = file:list_dir(TargetFolder),
+    get_group_name(0, Files).
+
+get_group_name(N, List) ->
+    GName = "group_"++integer_to_list(N),
+    case lists:member(GName, List) of
+        true ->
+            get_group_name(N+1, List);
+        _ ->
+            {ok, GName}
+    end.
+

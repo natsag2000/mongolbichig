@@ -1,6 +1,6 @@
 -module(fea2dot).
 -compile([export_all]).
--import(utils, [create_folder/1, get_list_from_file/1, get_uniq_name/2, get_random_str/1]).
+-import(utils, [create_folder/1, get_list_from_file/1, get_uniq_name/2, get_random_str/1, get_group_name/1]).
 -import(config, [get_glyph_path/0, get_export_type/0, get_export_class_fullpath/0]).
 -import(fea2html, [write_list_glyphs_to_html/3]).
 -include("../include/features.hrl").
@@ -114,7 +114,7 @@ generate([{?amperaphost, Feature}|Rest], EF, Buf, IList, IsBy) ->
     {ok, NList, CGlyph} = make_class(Feature, ?color_green, IList, EF),
     generate(Rest, EF, [ CGlyph|Buf], NList, IsBy);
 generate([{?multiple, Features}|Rest], EF, Buf, IList, IsBy) ->
-    Basename = ?random_name("group", 5),
+    {ok, Basename} = get_group_name(EF),
     case get_export_type() of
         {ok, dot} ->
             {ok, done} = write_list_glyphs_to_dot(Features, Basename, EF);
@@ -125,7 +125,7 @@ generate([{?multiple, Features}|Rest], EF, Buf, IList, IsBy) ->
     {ok, NList, CGlyph} = make_group(Basename, Features, Color, IList),
     generate(Rest, EF, [CGlyph | Buf], NList, IsBy);
 generate([{?multipleaphost, Features}|Rest], EF, Buf, IList, IsBy) ->
-    Basename = ?random_name("group", 5),
+    {ok, Basename} = get_group_name(EF),
     case get_export_type() of
         {ok, dot} ->
             {ok, done} = write_list_glyphs_to_dot(Features, Basename, EF);
