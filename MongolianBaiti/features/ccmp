@@ -1,5 +1,6 @@
 feature ccmp { # Glyph Composition/Decomposition
  script mong; # Mongolian
+lookup ccmp1{
 lookupflag IgnoreMarks;
     sub uni1800 uni180B by uni1800.var1;
     sub uni1800 uni180C by uni1800.var2;
@@ -11,4 +12,5 @@ lookupflag IgnoreMarks;
  language MNG ; # Mongolian
  language SIB ; # Sibe
  language TOD ; # Todo
+} ccmp1;
 } ccmp;
