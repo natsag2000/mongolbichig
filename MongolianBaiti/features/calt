@@ -197,12 +197,12 @@ lookupflag 0;
 } calt71;
 lookup calt73 {
 lookupflag IgnoreMarks;
-    sub uni202F uni1828.init uni1826.medi' by uni1826.medivar1;
-    sub uni202F uni182F.init uni1826.medi' by uni1826.medivar1;
-    sub uni202F uni1832.init uni1826.medi' by uni1826.medivar1;
-    sub uni202F uni1833.initvar1 uni1826.medi' by uni1826.medivar1;
-    sub uni202F uni1836.initvar2 uni1826.medi' by uni1826.medivar1;
-    sub uni202F uni1836.init uni1826.medi' by uni1826.medivar1;
+    sub uni202F uni1828.init [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni182F.init [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni1832.init [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni1833.initvar1 [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni1836.initvar2 [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
+    sub uni202F uni1836.init [uni1826.medi uni1826.fina]' by [uni1826.medivar1 uni1826.medivar1];
 } calt73;
 lookup calt74 {
 lookupflag 0;
@@ -251,14 +251,12 @@ lookup calt86 {
     sub uni202F uni182F.init uni1826.medivar1' uni202F by uni1826.fina;
 } calt86;
 lookup calt87 {
-    sub [uni1826.init uni1826.medi uni182A1826.init uni182B1826.init uni182C1826.init uni182C1826.initvar1 uni182C1826.initvar2 uni182C1826.initvar3 uni182D1826.init uni182D1826.initvar1 uni18391826.init uni183A1826.init] uni1836.medivar1' uni1822.medi' by uni1822.medi;
+    sub uni182E.init uni1823.medi uni1829182D.medi' uni1823.medi uni182F.fina by uni1829182D.medivar1;
 } calt87;
 lookup calt88 {
-    sub uni1829182D.fina' [uni1820.medi uni1820.fina uni1823.medi uni1823.fina uni1824.medi uni1824.fina] by uni1829182D.medivar1;
-    sub uni1829182D.fina' uni180E uni1820mvsvar1 by uni1829182D.finavar1;
+    sub uni182E.init uni1820.medi uni1829182D.fina' uni180E by uni1829182D.finavar1;
 } calt88;
-
-language MCH  exclude_dflt; # Manchu
+ language MCH exclude_dflt; # Manchu
 lookup calt20;
 lookup calt29;
 lookup calt30;
@@ -277,7 +275,7 @@ lookup calt53;
 lookup calt61;
 lookup calt65;
 lookup calt71;
- language MNG  exclude_dflt; # Mongolian
+ language MNG exclude_dflt; # Mongolian
 lookup calt19;
 lookup calt20;
 lookup calt21;
@@ -318,7 +316,7 @@ lookup calt84;
 lookup calt85;
 lookup calt87;
 lookup calt88;
- language SIB  exclude_dflt; # Sibe
+ language SIB exclude_dflt; # Sibe
 lookup calt20;
 lookup calt29;
 lookup calt30;
@@ -331,7 +329,7 @@ lookup calt40;
 lookup calt46;
 lookup calt53;
 lookup calt71;
- language TOD  exclude_dflt; # Todo
+ language TOD exclude_dflt; # Todo
 lookup calt34;
 lookup calt35;
 lookup calt36;

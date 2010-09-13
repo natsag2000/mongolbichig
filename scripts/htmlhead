@@ -1,6 +1,15 @@
 <html>
 <head>
 <title>lookup</title>
+<script language="javascript">
+  function toggleDiv(divid){
+    if(document.getElementById(divid).style.display == 'none'){
+      document.getElementById(divid).style.display = 'block';
+    }else{
+      document.getElementById(divid).style.display = 'none';
+    }
+  }
+</script>
 <style type=text/css>
 td {height:60px; border:solid black 1px;font-family:serif;font-size:12px}
 td.green {height:60px; border:solid green 1px;font-family:serif;font-size:12px}

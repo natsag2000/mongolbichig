@@ -1,11 +1,11 @@
 -module(fea2html).
 -compile([export_all]).
--import(utils, [create_folder/1, get_list_from_file/1]).
+-import(utils, [create_folder/1, get_list_from_file/1, get_random_str/1]).
 -import(fea2dot, [generate_dot/2]).
 -include("../include/features.hrl").
 -include("../include/fea2html.hrl").
 -include("../include/fea2dot.hrl").
-
+-define(random_name(V), lists:flatten(V++get_random_str(7))).
 %% API zone
 %% ========
 export_html({feature, Name, Lookups}, ClassFolder, TargetFolder) ->
@@ -85,10 +85,14 @@ write_table_row(_H=#dotglyph{cluster_name=_ClusterName,
     {ok, done};
 
 write_table_row({multi, Name, Color, List}, FD) ->
+    RName = ?random_name("multi"),
     ok = io:format(FD, ?table_list_data_hd(Color), []),
+    ok = io:format(FD, ?div_head(RName, Name), []),
+    ok = io:format(FD, ?div_tag(RName), []),
     ok = io:format(FD, ?table_inner_head(Name), []),
     {ok, done} = write_table_inner_row(List, FD),
     ok = io:format(FD, ?table_inner_foot, []),
+    ok = io:format(FD, ?div_foot, []),
     ok = io:format(FD, ?table_list_data_ft, []),
     {ok, done};
 

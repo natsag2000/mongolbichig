@@ -18,3 +18,8 @@
 -define(table_inner_head(V), ?f("        <table><tr>"++V++"</tr>\n")).
 -define(table_inner_data(V1,V2), ?f("        <td valign=top class=multi width=60><img src=../png/"++V1++" border=0/><br/>"++V2++"</td>\n")).
 -define(table_inner_foot, ?f("        </table>\n")).
+
+-define(div_head(V1, V2), ?f("<a href='javascript:;' onmousedown=\"toggleDiv('"++V1++"');\">"++V2++"</a>")).
+-define(div_tag(V), ?f("    <div id='"++V++"' style='display:none'>")).
+-define(div_foot, ?f("    </div>")).
+
