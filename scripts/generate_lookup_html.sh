@@ -22,21 +22,54 @@ set FF=/tmp/features.tmp
 set HF=/tmp/result.html
 set GF=/tmp/glyphs.html
 
+set CFilesBody=/tmp/classesbody.tmp
+set CFilesHead=/tmp/classeshead.tmp
+set GFilesBody=/tmp/groupsbody.tmp
+set GFilesHead=/tmp/groupshead.tmp
+
 echo "" > $HF
 echo "" > $FF
 echo "" > $OF
+echo "" > $CFilesBody
+echo "" > $CFilesHead
+echo "" > $GFilesBody
+echo "" > $GFilesHead
 
 cat ./htmlhead > $HF
+
+## feature files
 echo '<a name="top">FEATURES</a><br/>' >> $HF
-foreach F (`find $sourcedir -type f -name "*.th"`)
+foreach F (`find $sourcedir -type f -name "*.th" | grep -v classes | grep -v group`)
   set fname=`basename $F | sed 's/.th//'`
   echo '<a href="#'$fname'">'$fname"</a>" >> $FF
   echo '<a name="'$fname'"><h1>'$fname'</h1></a> <a href="#top">top</a></br>' >> $OF
   cat $F | sed 's/\.\.\/png/png/g' >> $OF
 end
 
+## classes files
+echo '<br/><br/><a>CLASSES</a><br/>' > $CFilesHead
+foreach F (`find $sourcedir -type f -name "*.th" | grep classes`)
+  set fname=`basename $F | sed 's/.th//'`
+  echo '<a href="#CC'$fname'">@'$fname"</a>" >> $CFilesHead
+  echo '<a name="CC'$fname'"><h1>@'$fname'</h1></a> <a href="#top">top</a></br>' >> $CFilesBody
+  cat $F | sed 's/\.\.\/png/png/g' >> $CFilesBody
+end
+
+## group files
+echo '<br/><br/><a>GROUPS</a><br/>' > $GFilesHead
+foreach F (`find $sourcedir -type f -name "*.th" | grep group`)
+  set fname=`basename $F | sed 's/.th//'`
+  echo '<a href="#'$fname'">'$fname"</a>" >> $GFilesHead
+  echo '<a name="'$fname'"><h1>'$fname'</h1></a> <a href="#top">top</a></br>' >> $GFilesBody
+  cat $F | sed 's/\.\.\/png/png/g' >> $GFilesBody
+end
+
 cat $FF >> $HF
+cat $CFilesHead >> $HF
+cat $GFilesHead >> $HF
 cat $OF >> $HF
+cat $CFilesBody >> $HF
+cat $GFilesBody >> $HF
 
 cat ./htmlfoot >> $HF
 
