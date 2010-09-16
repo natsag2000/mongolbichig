@@ -52,8 +52,8 @@ for letter in mongoluseg_ext:
     fontpath = GLYPHS_DIR + '/' +letter+".svg"
     print(fontpath)
     font[letter].importOutlines(fontpath)
-    font[letter].left_side_bearing = 15
-    font[letter].right_side_bearing = 15
+    font[letter].left_side_bearing = -15
+    font[letter].right_side_bearing = -15
     deccounter = deccounter + 1
 
 font.generate('crazy.ttf')
