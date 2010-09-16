@@ -22,7 +22,7 @@ if ( ! -d $outputfolder ) then
 endif
 
 foreach File (*.bmp)
-  set newname=`basename $File | sed 's/\$//' | sed 's/.bmp/.png/'`
+  set newname=`basename $File | sed 's/\$//g' | sed 's/.bmp/.png/'`
   convert $File $outputfolder/$newname
   rm $File
 end

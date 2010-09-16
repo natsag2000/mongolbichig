@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>lookup</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script language="javascript">
   function toggleDiv(divid){
     if(document.getElementById(divid).style.display == 'none'){
