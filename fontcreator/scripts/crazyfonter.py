@@ -3,14 +3,13 @@
 # crazy font creator
 #
 
-MONGOL_USEG = 'mongoluseg'
-MONGOL_USEG_EXT='mongoluseg_ext'
+MONGOL_USEG = '../misc/mongoluseg'
+MONGOL_USEG_EXT='../misc/mongoluseg_ext'
 GLYPHS_DIR = '/tmp/svgs'
-BLANK_FONT = 'blank.sfd'
-BASE_FONT = 'DejaVuSans.sfd'
-TMP_FONT = 'temp.sfd'
-ALL_GLYPHS = '../misc/allglyphs'
-BUILD_DIR = 'build'
+BLANK_FONT = '../resources/blank.sfd'
+BASE_FONT = '../resources/DejaVuSans.sfd'
+TMP_FONT = '/tmp/temp.sfd'
+
 # private zone
 PRIVATE_ZONE =hex(0xf300)
 import fontforge

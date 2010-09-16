@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
 set sourcedir=$1
-set outputfile=otfclasses
+set outputfile=classheads
 
 echo "" > $outputfile
 foreach F (`find $sourcedir -type f`)

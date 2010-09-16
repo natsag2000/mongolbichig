@@ -4,7 +4,7 @@
 #
 import sys
 import fontforge
-NAMELIST = "namelist"
+NAMELIST = "/tmp/namelist"
 
 if(len(sys.argv) != 2):
     print("USAGE: ./createGOADB.py fontfile")
