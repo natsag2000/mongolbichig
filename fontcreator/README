@@ -1,0 +1,3 @@
+
+in OTFCreation folder:
+   makeotf -f crazy.ttf -o crazy.otf -ff features -mf FontMenuNameDB -gf GlyphOrderAndAliasDB
