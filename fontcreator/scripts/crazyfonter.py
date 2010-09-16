@@ -15,6 +15,8 @@ PRIVATE_ZONE =hex(0xf300)
 import fontforge
 
 font1 = fontforge.open(BASE_FONT)
+# has conflict by otf generation
+font1["Delta"].clear()
 font1.generate(TMP_FONT)
 font = fontforge.open(TMP_FONT)
 
@@ -26,6 +28,7 @@ mongoluseg_ext = f.readlines()
 f.close()
 
 # first unicode standart zone
+# TODO check special cases: maaglha, dottedcircle etc!!
 for letter in mongoluseg:
     letter = letter.strip()
     unizone=letter.split("uni")[1]
