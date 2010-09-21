@@ -2,7 +2,8 @@
 #
 # crazy font creator
 #
-import fontforge ConfigParser
+import fontforge 
+import ConfigParser
 
 # read config files
 config = ConfigParser.RawConfigParser()
@@ -11,7 +12,7 @@ config.read("config.cfg")
 # TODO: check if they exist!
 MONGOL_USEG     = config.get('Font data', 'MONGOL_USEG')
 MONGOL_USEG_EXT = config.get('Font data', 'MONGOL_USEG_EXT')
-GLYPHS_DIR      = config.get('Font data', 'GLYPHS_DIR'
+GLYPHS_DIR      = config.get('Font data', 'GLYPHS_DIR')
 BASE_FONT       = config.get('Font data', 'BASE_FONT')
 FEATURE_FILE    = config.get('Font data', 'FEATURE_FILE')
 
