@@ -2,21 +2,29 @@
 #
 # crazy font creator
 #
+import fontforge ConfigParser
 
-MONGOL_USEG = '../misc/mongoluseg'
-MONGOL_USEG_EXT='../misc/mongoluseg_ext'
-GLYPHS_DIR = '/tmp/svgs'
-BLANK_FONT = '../resources/blank.sfd'
-BASE_FONT = '../resources/DejaVuSans.sfd'
+# read config files
+config = ConfigParser.RawConfigParser()
+config.read("config.cfg")
+
+# TODO: check if they exist!
+MONGOL_USEG     = config.get('Font data', 'MONGOL_USEG')
+MONGOL_USEG_EXT = config.get('Font data', 'MONGOL_USEG_EXT')
+GLYPHS_DIR      = config.get('Font data', 'GLYPHS_DIR'
+BASE_FONT       = config.get('Font data', 'BASE_FONT')
+FEATURE_FILE    = config.get('Font data', 'FEATURE_FILE')
+
+# internal use
 TMP_FONT = '/tmp/temp.sfd'
-FEATURE_FILE = '../misc/mongolbichig.fea'
 
-# private zone
+#BLANK_FONT = '../resources/blank.sfd'
+
+# private usage zone
 PRIVATE_ZONE =hex(0xf300)
-import fontforge
 
 font1 = fontforge.open(BASE_FONT)
-# has conflict by otf generation
+# Delta char has conflict by otf generation, so delete it
 font1["Delta"].clear()
 font1.generate(TMP_FONT)
 font = fontforge.open(TMP_FONT)
@@ -59,4 +67,5 @@ for letter in mongoluseg_ext:
 
 # merge feature
 font.mergeFeature(FEATURE_FILE)
+# generate font
 font.generate('crazy.ttf')
