@@ -1,3 +1,26 @@
+#  __  __  ___  _   _  ____  ___  _     ____ ___ ____ _   _ ___ ____
+# |  \/  |/ _ \| \ | |/ ___|/ _ \| |   | __ )_ _/ ___| | | |_ _/ ___|
+# | |\/| | | | |  \| | |  _| | | | |   |  _ \| | |   | |_| || | |  _
+# | |  | | |_| | |\  | |_| | |_| | |___| |_) | | |___|  _  || | |_| |
+# |_|  |_|\___/|_| \_|\____|\___/|_____|____/___\____|_| |_|___\____|
+#
 
+crazyfonter.py зэвсгээр шинэ үсгийн маяг зохионо. Хэрэгтэй зүйлс гэвэл:
+
+GLYPHS_DIR = '/tmp/svgs'                  -> зурсан үсэгнүүд
+FEATURE_FILE = '../misc/mongolbichig.fea' -> feature файл
+BASE_FONT = '../resources/DejaVuSans.sfd' -> дурын файлын sfd хувилбар
+
+хэрэгтэй холбоос
+----------------
+  http://dejavu-fonts.org/wiki/Download dejavu-fonts-2.32 (SFD)
+
+Хийх зүйлс
+----------
+Бүрэн автоматжуулалт!
+
+Хуучирсан
+---------
+Adobe FDK -р feature файл нийлүүлэхээр бол
 in OTFCreation folder:
    makeotf -f crazy.ttf -o crazy.otf -ff features -mf FontMenuNameDB -gf GlyphOrderAndAliasDB

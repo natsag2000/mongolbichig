@@ -9,6 +9,7 @@ GLYPHS_DIR = '/tmp/svgs'
 BLANK_FONT = '../resources/blank.sfd'
 BASE_FONT = '../resources/DejaVuSans.sfd'
 TMP_FONT = '/tmp/temp.sfd'
+FEATURE_FILE = '../misc/mongolbichig.fea'
 
 # private zone
 PRIVATE_ZONE =hex(0xf300)
@@ -56,4 +57,6 @@ for letter in mongoluseg_ext:
     font[letter].right_side_bearing = -15
     deccounter = deccounter + 1
 
+# merge feature
+font.mergeFeature(FEATURE_FILE)
 font.generate('crazy.ttf')
