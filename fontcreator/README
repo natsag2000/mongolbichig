@@ -5,11 +5,13 @@
 # |_|  |_|\___/|_| \_|\____|\___/|_____|____/___\____|_| |_|___\____|
 #
 
-crazyfonter.py зэвсгээр шинэ үсгийн маяг зохионо. Хэрэгтэй зүйлс гэвэл:
+crazyfonter.py зэвсгээр шинэ үсгийн маяг зохионо. Тохируулгыг config.cfg файлд хийх хэрэгтэй. Үүнд:
 
-GLYPHS_DIR = '/tmp/svgs'                  -> зурсан үсэгнүүд
-FEATURE_FILE = '../misc/mongolbichig.fea' -> feature файл
-BASE_FONT = '../resources/DejaVuSans.sfd' -> дурын файлын sfd хувилбар
+MONGOL_USEG = misc/mongoluseg        -> Юникод стандарт хуваарьт буй үсэгнүүд 0x1820 ..
+MONGOL_USEG_EXT= misc/mongoluseg_ext -> private usage zone-д байрлах үсэгнүүд
+FEATURE_FILE = misc/mongolbichig.fea -> feature файл
+BASE_FONT = resources/DejaVuSans.sfd -> үндэс болгосон дурын фонт файлын sfd хувилбар
+GLYPHS_DIR = /tmp/svgs               -> зурсан үсэгнүүд
 
 хэрэгтэй холбоос
 ----------------
@@ -19,8 +21,8 @@ BASE_FONT = '../resources/DejaVuSans.sfd' -> дурын файлын sfd хув�
 ----------
 Бүрэн автоматжуулалт!
 
-Хуучирсан
----------
+Хуучирсан боловч хэрэгтэй
+-------------------------
 Adobe FDK -р feature файл нийлүүлэхээр бол
 in OTFCreation folder:
    makeotf -f crazy.ttf -o crazy.otf -ff features -mf FontMenuNameDB -gf GlyphOrderAndAliasDB
