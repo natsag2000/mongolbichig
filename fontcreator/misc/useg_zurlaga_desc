@@ -85,7 +85,7 @@ uni1824.medivar1      = шүд гэдэс нуруу
 uni1824.var1          = гэдэс-сүүлд
 uni18241824           = гэдэс нуруу гэдэс-сүүлд
 uni1825               = титэм гэдэс оготорсүүл
-uni1825.fina          = гэдэс сүүлд
+uni1825.fina          = гэдэс-сүүлд
 uni1825.finavar1      = гэдэс нуруу оготорсүүл
 uni1825.init          = титэм гэдэс нуруу шилбэ
 uni1825.medi          = гэдэс нуруу шилбэ
@@ -132,447 +132,447 @@ uni1829182D.finavar1  = шүд нг-нум богино-сүүлГ
 uni1829182D.medi      = шүд нг-нум шүд
 uni1829182D.medivar1  = шүд нг-нумГ
 uni1829182F.medi      = шүд нг-нумЛ
-uni182A
-uni182A.fina
-uni182A.finavar1
-uni182A.init
-uni182A.medi
-uni182A1820
-uni182A1820.fina
-uni182A1820.init
-uni182A1820.medi
-uni182A1821
-uni182A1821.fina
-uni182A1821.init
-uni182A1821.medi
-uni182A1822
-uni182A1822.fina
-uni182A1822.init
-uni182A1822.medi
-uni182A1823
-uni182A1823.fina
-uni182A1823.init
-uni182A1823.medi
-uni182A1824
-uni182A1824.fina
-uni182A1824.init
-uni182A1824.medi
-uni182A1825
-uni182A1825.fina
-uni182A1825.finavar1
-uni182A1825.init
-uni182A1825.medi
-uni182A1825.medivar1
-uni182A1825.var1
-uni182A1826
-uni182A1826.fina
-uni182A1826.finavar1
-uni182A1826.init
-uni182A1826.medi
-uni182A1826.medivar1
-uni182A1826.var1
-uni182A1826.var2
-uni182A1827
-uni182A1827.fina
-uni182A1827.init
-uni182A1827.medi
-uni182A182F.init
-uni182A182F.medi
-uni182B
-uni182B.fina
-uni182B.init
-uni182B.medi
-uni182B1820
-uni182B1820.fina
-uni182B1820.init
-uni182B1820.medi
-uni182B1821
-uni182B1821.fina
-uni182B1821.init
-uni182B1821.medi
-uni182B1822
-uni182B1822.fina
-uni182B1822.init
-uni182B1822.medi
-uni182B1823
-uni182B1823.fina
-uni182B1823.init
-uni182B1823.medi
-uni182B1824
-uni182B1824.fina
-uni182B1824.init
-uni182B1824.medi
-uni182B1825
-uni182B1825.fina
-uni182B1825.finavar1
-uni182B1825.init
-uni182B1825.medi
-uni182B1825.medivar1
-uni182B1825.var1
-uni182B1826
-uni182B1826.fina
-uni182B1826.finavar1
-uni182B1826.init
-uni182B1826.medi
-uni182B1826.medivar1
-uni182B1826.var1
-uni182B1827
-uni182B1827.fina
-uni182B1827.init
-uni182B1827.medi
-uni182C
-uni182C.fina
-uni182C.finavar1
-uni182C.finavar2
-uni182C.init
-uni182C.initfem
-uni182C.initvar1
-uni182C.isolfem
-uni182C.medi
-uni182C.medivar1
-uni182C.medivar2
-uni182C.medivar3
-uni182C1821
-uni182C1821.fina
-uni182C1821.finavar1
-uni182C1821.init
-uni182C1821.initvar1
-uni182C1821.medi
-uni182C1821.medivar1
-uni182C1821.var1
-uni182C1822
-uni182C1822.fina
-uni182C1822.finavar1
-uni182C1822.init
-uni182C1822.initvar1
-uni182C1822.medi
-uni182C1822.medivar1
-uni182C1822.var1
-uni182C1825
-uni182C1825.fina
-uni182C1825.finavar1
-uni182C1825.finavar2
-uni182C1825.finavar3
-uni182C1825.init
-uni182C1825.initvar1
-uni182C1825.initvar2
-uni182C1825.initvar3
-uni182C1825.medi
-uni182C1825.medivar1
-uni182C1825.medivar2
-uni182C1825.medivar3
-uni182C1825.var1
-uni182C1825.var2
-uni182C1825.var3
-uni182C1826
-uni182C1826.fina
-uni182C1826.finavar1
-uni182C1826.finavar2
-uni182C1826.finavar3
-uni182C1826.init
-uni182C1826.initvar1
-uni182C1826.initvar2
-uni182C1826.initvar3
-uni182C1826.medi
-uni182C1826.medivar1
-uni182C1826.medivar2
-uni182C1826.medivar3
-uni182C1826.var1
-uni182C1826.var2
-uni182C1826.var3
-uni182C1827
-uni182C1827.fina
-uni182C1827.finavar1
-uni182C1827.init
-uni182C1827.initvar1
-uni182C1827.medi
-uni182C1827.medivar1
-uni182C1827.var1
-uni182D
-uni182D.fina
-uni182D.finafem
-uni182D.finavar1
-uni182D.finavar2
-uni182D.finavar3
-uni182D.init
-uni182D.initfem
-uni182D.initvar1
-uni182D.initvar2
-uni182D.isolfem
-uni182D.medi
-uni182D.medifem
-uni182D.medivar1
-uni182D.medivar2
-uni182D.medivar3
-uni182D1821
-uni182D1821.fina
-uni182D1821.finavar1
-uni182D1821.init
-uni182D1821.initvar1
-uni182D1821.medi
-uni182D1821.medivar1
-uni182D1821.var1
-uni182D1822
-uni182D1822.fina
-uni182D1822.finavar1
-uni182D1822.init
-uni182D1822.initvar1
-uni182D1822.medi
-uni182D1822.medivar1
-uni182D1822.var1
-uni182D1825
-uni182D1825.fina
-uni182D1825.finavar1
-uni182D1825.finavar2
-uni182D1825.finavar3
-uni182D1825.init
-uni182D1825.initvar1
-uni182D1825.medi
-uni182D1825.medivar1
-uni182D1825.medivar2
-uni182D1825.medivar3
-uni182D1825.var1
-uni182D1825.var2
-uni182D1825.var3
-uni182D1826
-uni182D1826.fina
-uni182D1826.finavar1
-uni182D1826.finavar2
-uni182D1826.finavar3
-uni182D1826.init
-uni182D1826.initvar1
-uni182D1826.medi
-uni182D1826.medivar1
-uni182D1826.medivar2
-uni182D1826.medivar3
-uni182D1826.var1
-uni182D1826.var2
-uni182D1826.var3
-uni182D1827
-uni182D1827.fina
-uni182D1827.finavar1
-uni182D1827.init
-uni182D1827.initvar1
-uni182D1827.medi
-uni182D1827.medivar1
-uni182D1827.var1
-uni182D182F.medi
-uni182E
-uni182E.fina
-uni182E.init
-uni182E.medi
-uni182E182E.medi
-uni182E182F.medi
-uni182F
-uni182F.fina
-uni182F.init
-uni182F.medi
-uni182F182F.medi
-uni1830
-uni1830.fina
-uni1830.finavar1
-uni1830.finavar2
-uni1830.init
-uni1830.medi
-uni1831
-uni1831.fina
-uni1831.init
-uni1831.medi
-uni1832
-uni1832.fina
-uni1832.init
-uni1832.medi
-uni1832.medivar1
-uni1832.medivar2
-uni1833
-uni1833.fina
-uni1833.finavar1
-uni1833.init
-uni1833.initvar1
-uni1833.medi
-uni1833.medivar1
-uni1834
-uni1834.fina
-uni1834.init
-uni1834.medi
-uni1835
-uni1835.fina
-uni1835.init
-uni1835.medi
-uni1835.medivar1
-uni1835.var1
-uni1836
-uni1836.fina
-uni1836.finavar1
-uni1836.init
-uni1836.initvar1
-uni1836.initvar2
-uni1836.medi
-uni1836.medivar1
-uni1836.medivar2
-uni1836.medivar3
-uni1837
-uni1837.fina
-uni1837.init
-uni1837.medi
-uni1838
-uni1838.fina
-uni1838.finavar1
-uni1838.init
-uni1838.medi
-uni1839
-uni1839.fina
-uni1839.init
-uni1839.medi
-uni18391820
-uni18391820.fina
-uni18391820.init
-uni18391820.medi
-uni18391821
-uni18391821.fina
-uni18391821.init
-uni18391821.medi
-uni18391822
-uni18391822.fina
-uni18391822.init
-uni18391822.medi
-uni18391823
-uni18391823.fina
-uni18391823.init
-uni18391823.medi
-uni18391824
-uni18391824.fina
-uni18391824.init
-uni18391824.medi
-uni18391825
-uni18391825.fina
-uni18391825.finavar1
-uni18391825.init
-uni18391825.medi
-uni18391825.medivar1
-uni18391825.var1
-uni18391826
-uni18391826.fina
-uni18391826.finavar1
-uni18391826.init
-uni18391826.medi
-uni18391826.medivar1
-uni18391826.var1
-uni18391827
-uni18391827.fina
-uni18391827.init
-uni18391827.medi
-uni183A
-uni183A.fina
-uni183A.init
-uni183A.initvar1
-uni183A.medi
-uni183A.medivar1
-uni183A1820
-uni183A1820.fina
-uni183A1820.init
-uni183A1820.medi
-uni183A1821
-uni183A1821.fina
-uni183A1821.init
-uni183A1821.medi
-uni183A1822
-uni183A1822.fina
-uni183A1822.init
-uni183A1822.medi
-uni183A1823
-uni183A1823.fina
-uni183A1823.init
-uni183A1823.medi
-uni183A1824
-uni183A1824.fina
-uni183A1824.init
-uni183A1824.medi
-uni183A1825
-uni183A1825.fina
-uni183A1825.finavar1
-uni183A1825.init
-uni183A1825.medi
-uni183A1825.medivar1
-uni183A1825.var1
-uni183A1826
-uni183A1826.fina
-uni183A1826.finavar1
-uni183A1826.init
-uni183A1826.medi
-uni183A1826.medivar1
-uni183A1826.var1
-uni183A1827
-uni183A1827.fina
-uni183A1827.init
-uni183A1827.medi
-uni183B
-uni183B.fina
-uni183B.init
-uni183B.medi
-uni183B1820
-uni183B1820.fina
-uni183B1820.init
-uni183B1820.medi
-uni183B1821
-uni183B1821.fina
-uni183B1821.init
-uni183B1821.medi
-uni183B1822
-uni183B1822.fina
-uni183B1822.init
-uni183B1822.medi
-uni183B1823
-uni183B1823.fina
-uni183B1823.init
-uni183B1823.medi
-uni183B1824
-uni183B1824.fina
-uni183B1824.init
-uni183B1824.medi
-uni183B1825
-uni183B1825.fina
-uni183B1825.finavar1
-uni183B1825.init
-uni183B1825.medi
-uni183B1825.medivar1
-uni183B1825.var1
-uni183B1826
-uni183B1826.fina
-uni183B1826.finavar1
-uni183B1826.init
-uni183B1826.medi
-uni183B1826.medivar1
-uni183B1826.var1
-uni183B1827
-uni183B1827.fina
-uni183B1827.init
-uni183B1827.medi
-uni183C
-uni183C.fina
-uni183C.init
-uni183C.medi
-uni183D
-uni183D.fina
-uni183D.init
-uni183D.medi
-uni183E
-uni183E.fina
-uni183E.init
-uni183E.medi
-uni183F
-uni183F.fina
-uni183F.init
-uni183F.medi
-uni1840
-uni1840.fina
-uni1840.init
-uni1840.medi
-uni1841
-uni1841.fina
-uni1841.init
-uni1841.medi
-uni1842
-uni1842.fina
-uni1842.init
-uni1842.medi
+uni182A = б
+uni182A.fina = б-сүүлд
+uni182A.finavar1 = гэдэс нуруу орхиц
+uni182A.init  = б
+uni182A.medi = б
+uni182A1820 = б шүд орхиц
+uni182A1820.fina = б шүд орхиц
+uni182A1820.init = б шүд
+uni182A1820.medi = б шүд
+uni182A1821 = б шүд орхиц
+uni182A1821.fina = б шүд орхиц
+uni182A1821.init = б шүд
+uni182A1821.medi = б шүд
+uni182A1822 = б шилбэ оготорсүүл
+uni182A1822.fina = б шилбэ оготорсүүл
+uni182A1822.init = б шилбэ
+uni182A1822.medi = б шилбэ
+uni182A1823 = б шилбэ
+uni182A1823.fina = бо
+uni182A1823.init = бо нуру
+uni182A1823.medi = бо нуруу
+uni182A1824 = бо
+uni182A1824.fina = бо
+uni182A1824.init = бо нуруу
+uni182A1824.medi = бо нуруу
+uni182A1825 = бо
+uni182A1825.fina = бо
+uni182A1825.finavar1 = бо нуруу оготорсүүл
+uni182A1825.init = бо нуруу шилбэ
+uni182A1825.medi = бо нуруу
+uni182A1825.medivar1 = бо нуруу шилбэ
+uni182A1825.var1 = бо нуруу оготорсүүл
+uni182A1826 = бо
+uni182A1826.fina = бо
+uni182A1826.finavar1 = бо нуруу оготорсүүл
+uni182A1826.init = бо нуруу шилбэ
+uni182A1826.medi = бо нуруу
+uni182A1826.medivar1 = бо нуруу шилбэ
+uni182A1826.var1 = бо нуруу оготорсүүл
+uni182A1826.var2 = бо нуруу гэдэс-сүүлд
+uni182A1827 = б в-гэдэс нуруу оготорсүүл
+uni182A1827.fina = б в-гэдэс нуруу оготорсүүл
+uni182A1827.init = б в-гэдэс
+uni182A1827.medi = б в-гэдэс
+uni182A182F.init = бл шүд
+uni182A182F.medi = бл шүд
+uni182B = ф
+uni182B.fina = ф-сүүлд
+uni182B.init = ф
+uni182B.medi = ф
+uni182B1820 = ф шүд нуруу орхиц
+uni182B1820.fina = ф шүд нуруу орхиц
+uni182B1820.init = ф шүд
+uni182B1820.medi = ф шүд
+uni182B1821 = ф шүд нуруу орхиц
+uni182B1821.fina = ф шүд нуруу орхиц
+uni182B1821.init = ф шүд
+uni182B1821.medi = ф шүд
+uni182B1822 = ф шилбэ оготорсүүл
+uni182B1822.fina = ф шилбэ оготорсүүл
+uni182B1822.init = ф шилбэ
+uni182B1822.medi = ф шилбэ
+uni182B1823 = фо
+uni182B1823.fina = фо
+uni182B1823.init = фо нуруу
+uni182B1823.medi = фо нуруу
+uni182B1824 = фо
+uni182B1824.fina = фо
+uni182B1824.init = фо нуруу
+uni182B1824.medi = фо нуруу
+uni182B1825 = фо
+uni182B1825.fina = фо
+uni182B1825.finavar1 = фо нуруу оготорсүүл
+uni182B1825.init = фо нуруу шилбэ
+uni182B1825.medi = фо нуруу
+uni182B1825.medivar1 = фо нуруу шилбэ
+uni182B1825.var1 = фо нуруу оготорсүүл
+uni182B1826 = фо
+uni182B1826.fina = фо
+uni182B1826.finavar1 = фо нуруу оготорсүүл
+uni182B1826.init = фо нуруу шилбэ
+uni182B1826.medi = фо нуруу
+uni182B1826.medivar1 = фо нуруу шилбэ
+uni182B1826.var1 = фо нуруу оготорсүүл
+uni182B1827 = фо в-гэдэс оготорсүүл
+uni182B1827.fina = фо в-гэдэс оготорсүүл
+uni182B1827.init = фо в-гэдэс
+uni182B1827.medi = фо в-гэдэс
+uni182C = ха
+uni182C.fina = шүд богино-сүүл
+uni182C.finavar1 = шүд богино-сүүлГ
+uni182C.finavar2 = шүд богино-сүүл
+uni182C.init = ха
+uni182C.initfem = хэ
+uni182C.initvar1 = га
+uni182C.isolfem = гэГ
+uni182C.medi = шүд шүд
+uni182C.medivar1 = га-дунд
+uni182C.medivar2 = шүд богино-сүүлГ
+uni182C.medivar3 = шүд богино-сүүл
+uni182C1821 = г-нум орхиц
+uni182C1821.fina = г-нум орхиц
+uni182C1821.finavar1 = г-нумГ орхиц
+uni182C1821.init = г-нум нуруу
+uni182C1821.initvar1 = г-нумГ нуруу
+uni182C1821.medi = г-нум нуруу
+uni182C1821.medivar1 = г-нумГ нуруу
+uni182C1821.var1 = г-нумГ нуруу орхиц
+uni182C1822 = гэ-нум шилбэ оготорсүүл
+uni182C1822.fina = гэ-нум шилбэ оготорсүүл
+uni182C1822.finavar1 = 
+uni182C1822.init = 
+uni182C1822.initvar1 = 
+uni182C1822.medi = 
+uni182C1822.medivar1 = 
+uni182C1822.var1 = 
+uni182C1825 = 
+uni182C1825.fina = 
+uni182C1825.finavar1 = 
+uni182C1825.finavar2 = 
+uni182C1825.finavar3 = 
+uni182C1825.init = 
+uni182C1825.initvar1 = 
+uni182C1825.initvar2 = 
+uni182C1825.initvar3 = 
+uni182C1825.medi = 
+uni182C1825.medivar1 = 
+uni182C1825.medivar2 = 
+uni182C1825.medivar3 = 
+uni182C1825.var1 = 
+uni182C1825.var2 = 
+uni182C1825.var3 = 
+uni182C1826 = 
+uni182C1826.fina = 
+uni182C1826.finavar1 = 
+uni182C1826.finavar2 = 
+uni182C1826.finavar3 = 
+uni182C1826.init = 
+uni182C1826.initvar1 = 
+uni182C1826.initvar2 = 
+uni182C1826.initvar3 = 
+uni182C1826.medi = 
+uni182C1826.medivar1 = 
+uni182C1826.medivar2 = 
+uni182C1826.medivar3 = 
+uni182C1826.var1 = 
+uni182C1826.var2 = 
+uni182C1826.var3 = 
+uni182C1827 = 
+uni182C1827.fina = 
+uni182C1827.finavar1 = 
+uni182C1827.init = 
+uni182C1827.initvar1 = 
+uni182C1827.medi = 
+uni182C1827.medivar1 = 
+uni182C1827.var1 = 
+uni182D = 
+uni182D.fina = 
+uni182D.finafem = 
+uni182D.finavar1 = 
+uni182D.finavar2 = 
+uni182D.finavar3 = 
+uni182D.init = 
+uni182D.initfem = 
+uni182D.initvar1 = 
+uni182D.initvar2 = 
+uni182D.isolfem = 
+uni182D.medi = 
+uni182D.medifem = 
+uni182D.medivar1 = 
+uni182D.medivar2 = 
+uni182D.medivar3 = 
+uni182D1821 = 
+uni182D1821.fina = 
+uni182D1821.finavar1 = 
+uni182D1821.init = 
+uni182D1821.initvar1 = 
+uni182D1821.medi = 
+uni182D1821.medivar1 = 
+uni182D1821.var1 = 
+uni182D1822 = 
+uni182D1822.fina = 
+uni182D1822.finavar1 = 
+uni182D1822.init = 
+uni182D1822.initvar1 = 
+uni182D1822.medi = 
+uni182D1822.medivar1 = 
+uni182D1822.var1 = 
+uni182D1825 = 
+uni182D1825.fina = 
+uni182D1825.finavar1 = 
+uni182D1825.finavar2 = 
+uni182D1825.finavar3 = 
+uni182D1825.init = 
+uni182D1825.initvar1 = 
+uni182D1825.medi = 
+uni182D1825.medivar1 = 
+uni182D1825.medivar2 = 
+uni182D1825.medivar3 = 
+uni182D1825.var1 = 
+uni182D1825.var2 = 
+uni182D1825.var3 = 
+uni182D1826 = 
+uni182D1826.fina = 
+uni182D1826.finavar1 = 
+uni182D1826.finavar2 = 
+uni182D1826.finavar3 = 
+uni182D1826.init = 
+uni182D1826.initvar1 = 
+uni182D1826.medi = 
+uni182D1826.medivar1 = 
+uni182D1826.medivar2 = 
+uni182D1826.medivar3 = 
+uni182D1826.var1 = 
+uni182D1826.var2 = 
+uni182D1826.var3 = 
+uni182D1827 = 
+uni182D1827.fina = 
+uni182D1827.finavar1 = 
+uni182D1827.init = 
+uni182D1827.initvar1 = 
+uni182D1827.medi = 
+uni182D1827.medivar1 = 
+uni182D1827.var1 = 
+uni182D182F.medi = 
+uni182E = 
+uni182E.fina = 
+uni182E.init = 
+uni182E.medi = 
+uni182E182E.medi = 
+uni182E182F.medi = 
+uni182F = 
+uni182F.fina = 
+uni182F.init = 
+uni182F.medi = 
+uni182F182F.medi = 
+uni1830 = 
+uni1830.fina = 
+uni1830.finavar1 = 
+uni1830.finavar2 = 
+uni1830.init = 
+uni1830.medi = 
+uni1831 = 
+uni1831.fina = 
+uni1831.init = 
+uni1831.medi = 
+uni1832 = 
+uni1832.fina = 
+uni1832.init = 
+uni1832.medi = 
+uni1832.medivar1 = 
+uni1832.medivar2 = 
+uni1833 = 
+uni1833.fina = 
+uni1833.finavar1 = 
+uni1833.init = 
+uni1833.initvar1 = 
+uni1833.medi = 
+uni1833.medivar1 = 
+uni1834 = 
+uni1834.fina = 
+uni1834.init = 
+uni1834.medi = 
+uni1835 = 
+uni1835.fina = 
+uni1835.init = 
+uni1835.medi = 
+uni1835.medivar1 = 
+uni1835.var1 = 
+uni1836 = 
+uni1836.fina = 
+uni1836.finavar1 = 
+uni1836.init = 
+uni1836.initvar1 = 
+uni1836.initvar2 = 
+uni1836.medi = 
+uni1836.medivar1 = 
+uni1836.medivar2 = 
+uni1836.medivar3 = 
+uni1837 = 
+uni1837.fina = 
+uni1837.init = 
+uni1837.medi = 
+uni1838 = 
+uni1838.fina = 
+uni1838.finavar1 = 
+uni1838.init = 
+uni1838.medi = 
+uni1839 = 
+uni1839.fina = 
+uni1839.init = 
+uni1839.medi = 
+uni18391820 = 
+uni18391820.fina = 
+uni18391820.init = 
+uni18391820.medi = 
+uni18391821 = 
+uni18391821.fina = 
+uni18391821.init = 
+uni18391821.medi = 
+uni18391822 = 
+uni18391822.fina = 
+uni18391822.init = 
+uni18391822.medi = 
+uni18391823 = 
+uni18391823.fina = 
+uni18391823.init = 
+uni18391823.medi = 
+uni18391824 = 
+uni18391824.fina = 
+uni18391824.init = 
+uni18391824.medi = 
+uni18391825 = 
+uni18391825.fina = 
+uni18391825.finavar1 = 
+uni18391825.init = 
+uni18391825.medi = 
+uni18391825.medivar1 = 
+uni18391825.var1 = 
+uni18391826 = 
+uni18391826.fina = 
+uni18391826.finavar1 = 
+uni18391826.init = 
+uni18391826.medi = 
+uni18391826.medivar1 = 
+uni18391826.var1 = 
+uni18391827 = 
+uni18391827.fina = 
+uni18391827.init = 
+uni18391827.medi = 
+uni183A = 
+uni183A.fina = 
+uni183A.init = 
+uni183A.initvar1 = 
+uni183A.medi = 
+uni183A.medivar1 = 
+uni183A1820 = 
+uni183A1820.fina = 
+uni183A1820.init = 
+uni183A1820.medi = 
+uni183A1821 = 
+uni183A1821.fina = 
+uni183A1821.init = 
+uni183A1821.medi = 
+uni183A1822 = 
+uni183A1822.fina = 
+uni183A1822.init = 
+uni183A1822.medi = 
+uni183A1823 = 
+uni183A1823.fina = 
+uni183A1823.init = 
+uni183A1823.medi = 
+uni183A1824 = 
+uni183A1824.fina = 
+uni183A1824.init = 
+uni183A1824.medi = 
+uni183A1825 = 
+uni183A1825.fina = 
+uni183A1825.finavar1 = 
+uni183A1825.init = 
+uni183A1825.medi = 
+uni183A1825.medivar1 = 
+uni183A1825.var1 = 
+uni183A1826 = 
+uni183A1826.fina = 
+uni183A1826.finavar1 = 
+uni183A1826.init = 
+uni183A1826.medi = 
+uni183A1826.medivar1 = 
+uni183A1826.var1 = 
+uni183A1827 = 
+uni183A1827.fina = 
+uni183A1827.init = 
+uni183A1827.medi = 
+uni183B = 
+uni183B.fina = 
+uni183B.init = 
+uni183B.medi = 
+uni183B1820 = 
+uni183B1820.fina = 
+uni183B1820.init = 
+uni183B1820.medi = 
+uni183B1821 = 
+uni183B1821.fina = 
+uni183B1821.init = 
+uni183B1821.medi = 
+uni183B1822 = 
+uni183B1822.fina = 
+uni183B1822.init = 
+uni183B1822.medi = 
+uni183B1823 = 
+uni183B1823.fina = 
+uni183B1823.init = 
+uni183B1823.medi = 
+uni183B1824 = 
+uni183B1824.fina = 
+uni183B1824.init = 
+uni183B1824.medi = 
+uni183B1825 = 
+uni183B1825.fina = 
+uni183B1825.finavar1 = 
+uni183B1825.init = 
+uni183B1825.medi = 
+uni183B1825.medivar1 = 
+uni183B1825.var1 = 
+uni183B1826 = 
+uni183B1826.fina = 
+uni183B1826.finavar1 = 
+uni183B1826.init = 
+uni183B1826.medi = 
+uni183B1826.medivar1 = 
+uni183B1826.var1 = 
+uni183B1827 = 
+uni183B1827.fina = 
+uni183B1827.init = 
+uni183B1827.medi = 
+uni183C = 
+uni183C.fina = 
+uni183C.init = 
+uni183C.medi = 
+uni183D = 
+uni183D.fina = 
+uni183D.init = 
+uni183D.medi = 
+uni183E = 
+uni183E.fina = 
+uni183E.init = 
+uni183E.medi = 
+uni183F = 
+uni183F.fina = 
+uni183F.init = 
+uni183F.medi = 
+uni1840 = 
+uni1840.fina = 
+uni1840.init = 
+uni1840.medi = 
+uni1841 = 
+uni1841.fina = 
+uni1841.init = 
+uni1841.medi = 
+uni1842 = 
+uni1842.fina = 
+uni1842.init = 
+uni1842.medi = 
