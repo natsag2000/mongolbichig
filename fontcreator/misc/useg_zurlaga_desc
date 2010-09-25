@@ -16,122 +16,122 @@ uni1800.var1
 uni1800.var2
 uni1800.var3
 uni1800.var4
-uni1801 = v_4_points
-uni1802 = one_point
-uni1803 = v_points
-uni1804 = h_points
-uni1805 = mgl_point
-uni1806 = нуруу
-uni1807 = шүд2
-uni1807.medi = шүд
+uni1801               = v_4_points
+uni1802               = one_point
+uni1803               = v_points
+uni1804               = h_points
+uni1805               = mgl_point
+uni1806               = нуруу
+uni1807               = шүд2
+uni1807.medi          = шүд
 uni1808
 uni1809
-uni180A = нуруу
-uni180A.mark = нуруу
+uni180A               = нуруу
+uni180A.mark          = нуруу
 uni180B
 uni180C
 uni180D
 uni180E
-uni1810  = number0
-uni1811  = number1
-uni1812  = number2
-uni1813  = number3
-uni1814  = number4
-uni1815  = number5
-uni1816  = number6
-uni1817  = number7
-uni1818  = number8
-uni1819  = number9
-uni1820  = титэм сүүл
-uni1820.fina = сүүл
-uni1820.finavar1 = орхиц
-uni1820.init = титэм шүд
-uni1820.initvar1 = титэм
-uni1820.medi
-uni1820.medivar1
-uni1820.medivar2
-uni1820.mvsvar1
-uni1820.var1
-uni1820.var2
-uni1821
-uni1821.fina
-uni1821.finavar1
-uni1821.init
-uni1821.initvar1
-uni1821.medi
-uni1821.mvsvar1
-uni1821.var1
-uni1822
-uni1822.fina
-uni1822.init
-uni1822.medi
-uni1822.medivar1
-uni1822.medivar2
-uni1822.medivar3
-uni1822.var1
-uni1823
-uni1823.fina
-uni1823.finavar1
-uni1823.init
-uni1823.medi
-uni1823.medivar1
-uni1824
-uni1824.fina
-uni1824.finavar1
-uni1824.init
-uni1824.isol
-uni1824.medi
-uni1824.medivar1
-uni1824.var1
-uni18241824
-uni1825
-uni1825.fina
-uni1825.finavar1
-uni1825.init
-uni1825.medi
-uni1825.medivar1
-uni1825.medivar2
-uni1826
-uni1826.fina
-uni1826.finavar1
-uni1826.init
-uni1826.initvar1
-uni1826.isol
-uni1826.medi
-uni1826.medivar1
-uni1826.medivar2
-uni1826.var1
-uni1826.var2
-uni18261826
-uni1827
-uni1827.fina
-uni1827.init
-uni1827.medi
-uni1828
-uni1828.fina
-uni1828.finavar1
-uni1828.finavar2
-uni1828.finavar3
-uni1828.init
-uni1828.initvar1
-uni1828.medi
-uni1828.medivar1
-uni1828.medivar2
-uni1828.medivar3
-uni1829
-uni1829.fina
-uni1829.init
-uni1829.medi
-uni18291828.medivar1
-uni1829182C.fina
-uni1829182C.finavar1
-uni1829182C.medi
-uni1829182C.medivar1
-uni1829182D.fina
-uni1829182D.finavar1
-uni1829182D.medi
-uni1829182D.medivar1
-uni1829182F.medi
+uni1810               = number0
+uni1811               = number1
+uni1812               = number2
+uni1813               = number3
+uni1814               = number4
+uni1815               = number5
+uni1816               = number6
+uni1817               = number7
+uni1818               = number8
+uni1819               = number9
+uni1820               = титэм сүүл
+uni1820.fina          = сүүл
+uni1820.finavar1      = орхиц
+uni1820.init          = титэм шүд
+uni1820.initvar1      = титэм
+uni1820.medi          = шүд
+uni1820.medivar1      = шүд шүд
+uni1820.medivar2      = титэм
+uni1820.mvsvar1       = орхиц
+uni1820.var1          = титэм орхиц
+uni1820.var2          = орхиц
+uni1821               = титэм орхиц
+uni1821.fina          = сүүл
+uni1821.finavar1      = орхиц
+uni1821.init          = титэм
+uni1821.initvar1      = титэм шүд
+uni1821.medi          = шүд
+uni1821.mvsvar1       = орхиц
+uni1821.var1          = орхиц
+uni1822               = титэм и-сүүлд
+uni1822.fina          = и-сүүлд
+uni1822.init          = титэм шилбэ
+uni1822.medi          = шилбэ
+uni1822.medivar1      = шүд шилбэ
+uni1822.medivar2      = шилбэ шилбэ
+uni1822.medivar3      = шилбэ
+uni1822.var1          = и-сүүлд
+uni1823               = титэм гэдэс
+uni1823.fina          = гэдэс-сүүлд
+uni1823.finavar1      = гэдэс
+uni1823.init          = титэм гэдэс
+uni1823.medi          = гэдэс нуруу
+uni1823.medivar1      = шүд гэдэс нуруу
+uni1824               = титэм гэдэс
+uni1824.fina          = гэдэс-сүүлд
+uni1824.finavar1      = гэдэс
+uni1824.init          = титэм гэдэс
+uni1824.isol          = титэм гэдэс
+uni1824.medi          = гэдэс нуруу
+uni1824.medivar1      = шүд гэдэс нуруу
+uni1824.var1          = гэдэс-сүүлд
+uni18241824           = гэдэс нуруу гэдэс-сүүлд
+uni1825               = титэм гэдэс оготорсүүл
+uni1825.fina          = гэдэс сүүлд
+uni1825.finavar1      = гэдэс нуруу оготорсүүл
+uni1825.init          = титэм гэдэс нуруу шилбэ
+uni1825.medi          = гэдэс нуруу шилбэ
+uni1825.medivar1      = гэдэс нуруу
+uni1825.medivar2      = шүд гэдэс нуруу шилбэ
+uni1826               = титэм гэдэс нуруу шилбэ
+uni1826.fina          = гэдэс-сүүлд
+uni1826.finavar1      = гэдэс нуруу  оготорсүүл
+uni1826.init          = титэм гэдэс нуруу шилбэ
+uni1826.initvar1      = гэдэс нуруу
+uni1826.isol          = титэм гэдэс нуруу оготорсүүл
+uni1826.medi          = гэдэс нуруу шилбэ
+uni1826.medivar1      = гэдэс нуруу
+uni1826.medivar2      = шүд гэдэс нуруу шилбэ
+uni1826.var1          = титэм гэдэс-сүүлд
+uni1826.var2          = гэдэс-сүүлд
+uni18261826           = гэдэс нуруу гэдэс-сүүлд
+uni1827               = титэм в-гэдэс оготорсүүл
+uni1827.fina          = в-гэдэс оготорсүүл
+uni1827.init          = титэм в-гэдэс
+uni1827.medi          = в-гэдэс
+uni1828               = титэмН
+uni1828.fina          = сүүл
+uni1828.finavar1      = сүүлН
+uni1828.finavar2      = сүүлН
+uni1828.finavar3      = сүүл
+uni1828.init          = титэмН
+uni1828.initvar1      = титэм
+uni1828.medi          = шүд
+uni1828.medivar1      = шүдН
+uni1828.medivar2      = сүүлН
+uni1828.medivar3      = нуруу шүдН
+uni1829               = шүд гэ-нум
+uni1829.fina          = шүд шилбэ орхиц
+uni1829.init          = шүд гэ-нум нуруу
+uni1829.medi          = шүд гэ-нум нуруу
+uni18291828.medivar1  = шүд нг-нумН
+uni1829182C.fina      = шүд нг-нум богино-сүүл
+uni1829182C.finavar1  = шүд нг-нум богино-сүүлГ
+uni1829182C.medi      = шүд нг-нум шүд
+uni1829182C.medivar1  = шүд нг-нумГ
+uni1829182D.fina      = шүд нг-нум богино-сүүл
+uni1829182D.finavar1  = шүд нг-нум богино-сүүлГ
+uni1829182D.medi      = шүд нг-нум шүд
+uni1829182D.medivar1  = шүд нг-нумГ
+uni1829182F.medi      = шүд нг-нумЛ
 uni182A
 uni182A.fina
 uni182A.finavar1
