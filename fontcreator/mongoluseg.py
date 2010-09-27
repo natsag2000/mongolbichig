@@ -3,7 +3,9 @@
 # crazy font creator
 #
 import ConfigParser
+import subprocess
 import re
+import os
 
 def main():
     # read config file
@@ -14,6 +16,8 @@ def main():
     USEG_DESC = config.get('Useg zurah', 'USEG_DESC')
     ATOM_FOLDER=config.get('Useg zurah', 'ATOM_FOLDER')
     GLYPH_OUT = config.get('Useg zurah', 'GLYPH_OUT')
+    if not os.path.exists(GLYPH_OUT):
+        os.makedirs(GLYPH_OUT)
     # read atom and desc
     usegatoms = readlines(USEG_ATOM)
     usegdesc = readlines(USEG_DESC)
@@ -21,7 +25,7 @@ def main():
     descs = read_desc(usegdesc)
     #for k, v in descs.items():
     #    print k, '  =  ', v
-    useg_uusge(atoms, descs, ATOM_FOLDER)
+    useg_uusge(atoms, descs, GLYPH_OUT)
 
 # TODO: check file if exits!
 def useg_uusge(Atoms, Desc, AFolder):
@@ -32,11 +36,15 @@ def useg_uusge(Atoms, Desc, AFolder):
             if not I in atomkeys:
                 print Name, ':', "Key not found: ", I
                 break
-            if l == ' ':
+            if I == ' ':
                 continue
             li.append(AFolder+'/' + Atoms[I] + '.svg')
-        Cmd = 'pythonx ' + " ".join(li) + ' > ' + Name + '.svg'
-        print Cmd
+        Cmd = 'pythonx ' + " ".join(li) + ' > ' + AFolder +'/'+Name + '.svg'
+        Cmd1 = Cmd.split(' ')
+        if not subprocess.call(Cmd, shell=True) == 0:
+            print "Not created: " + Cmd
+        else:
+            print Name, " created succesfully!"
 
 def read_atoms(List):
     dic = dict()
@@ -69,7 +77,7 @@ def read_desc(List):
     return dic
 
 def splitAndStrip(Line, Pattern):
-    return [ X.strip() for X in Line.split(Pattern)]
+    return [ X.strip() for X in Line.split(Pattern) if X != '']
 
 def isEmptyOrComment(Line):
     if Line.startswith('#') or len(Line) == 0:
