@@ -5,7 +5,9 @@
 # |_|  |_|\___/|_| \_|\____|\___/|_____|____/___\____|_| |_|___\____|
 #
 
-crazyfonter.py зэвсгээр шинэ үсгийн маяг зохионо. Тохируулгыг config.cfg файлд хийх хэрэгтэй. Үүнд:
+crazyfonter.py
+==============
+энэ зэвсгээр шинэ үсгийн маяг зохионо. Тохируулгыг config.cfg файлын [Font data] хэсэгт хийх хэрэгтэй. Үүнд:
 
 MONGOL_USEG = misc/mongoluseg        -> Юникод стандарт хуваарьт буй үсэгнүүд 0x1820 ..
 MONGOL_USEG_EXT= misc/mongoluseg_ext -> private usage zone-д байрлах үсэгнүүд
@@ -16,6 +18,16 @@ GLYPHS_DIR = /tmp/svgs               -> зурсан үсэгнүүд
 хэрэгтэй холбоос
 ----------------
   http://dejavu-fonts.org/wiki/Download dejavu-fonts-2.32 (SFD)
+
+mongoluseg.py
+==============
+үндсэн зурлагуудыг нийлүүл бүх үсэгнүүдийг зурагч.
+тохируулгыг мөн config.cfg файлын [Useg zurah] хэсэгт  хийх хэрэгтэй. Үүнд:
+
+USEG_ATOM = misc/useg_zurlaga_atom  үсэг зурах атом үндсэн зурлагууд
+USEG_DESC = misc/useg_zurlaga_desc  үндсэн зурлага ашиглаж үсэгнүүдийг зурах заавар
+ATOM_FOLDER = atoms                 үндсэн зурлагын зураг файл байгаа газар
+GLYPH_OUT = /tmp/glyphs             үүссэн үсэгнүүдийг хадгалах газар
 
 Хийх зүйлс
 ----------
