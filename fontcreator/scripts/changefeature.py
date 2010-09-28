@@ -22,7 +22,12 @@ def featureChange(Font, Feature, ResultFont):
     for l in font.gsub_lookups:
         font.removeLookup(l)
     font.mergeFeature(Feature)
-    font.generate(ResultFont)
+    font.fullname = ResultFont
+    font.familyname = ResultFont
+    font.fontname = ResultFont
+    font.version = "7.7"
+    resultName = ResultFont.split(".ttf")[0]
+    font.generate(resultName+".ttf")
 
 def usage():
     print "\nUSAGE: ", sys.argv[0], ' font_file feature_file result_file.ttf\n'
