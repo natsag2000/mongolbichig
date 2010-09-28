@@ -23,11 +23,8 @@ def main():
     usegdesc = readlines(USEG_DESC)
     atoms = read_atoms(usegatoms)
     descs = read_desc(usegdesc)
-    #for k, v in descs.items():
-    #    print k, '  =  ', v
     useg_uusge(atoms, descs, GLYPH_OUT)
 
-# TODO: check file if exits!
 def useg_uusge(Atoms, Desc, AFolder):
     atomkeys = Atoms.keys()
     for Name, Instr in Desc.items():
@@ -36,7 +33,7 @@ def useg_uusge(Atoms, Desc, AFolder):
             if not I in atomkeys:
                 print Name, ':', "Key not found: ", I
                 break
-            if I == ' ':
+            if I == ' ' or I == '':
                 continue
             li.append(AFolder+'/' + Atoms[I] + '.svg')
         Cmd = 'pythonx ' + " ".join(li) + ' > ' + AFolder +'/'+Name + '.svg'
