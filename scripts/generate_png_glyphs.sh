@@ -10,15 +10,15 @@ set glyphlist=$2
 set outputfolder=$3
 set PWD=`pwd`
 foreach G (`cat $glyphlist`)
-    $PWD/exportglyph.pe $fontname $G
+    $PWD/export_svg_glyph.pe $fontname $G
 end
 
 if ( ! -d $outputfolder ) then
     mkdir $outputfolder
 endif
 
-foreach File (*.bmp)
-  set newname=`basename $File | sed 's/\$//g' | sed 's/.bmp/.png/'`
+foreach File (*.svg)
+  set newname=`basename $File | sed 's/\$//g' | sed 's/.svg/.png/'`
   convert -rotate 90 -transparent white -resize 50% $File $outputfolder/$newname
   rm $File
 end
