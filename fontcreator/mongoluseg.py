@@ -1,6 +1,11 @@
 #!/usr/bin/env python
+#  __  __  ___  _   _  ____  ___  _       _   _ ____  _____ ____
+# |  \/  |/ _ \| \ | |/ ___|/ _ \| |     | | | / ___|| ____/ ___|
+# | |\/| | | | |  \| | |  _| | | | |     | | | \___ \|  _|| |  _
+# | |  | | |_| | |\  | |_| | |_| | |___  | |_| |___) | |__| |_| |
+# |_|  |_|\___/|_| \_|\____|\___/|_____|  \___/|____/|_____\____|
 #
-# crazy font creator
+# crazy useg creator
 #
 import ConfigParser
 import subprocess
@@ -12,10 +17,10 @@ def main():
     config = ConfigParser.RawConfigParser()
     config.read("config.cfg")
     # TODO: check if they exist!
-    USEG_ATOM = config.get('Useg zurah', 'USEG_ATOM')
-    USEG_DESC = config.get('Useg zurah', 'USEG_DESC')
-    ATOM_FOLDER=config.get('Useg zurah', 'ATOM_FOLDER')
-    GLYPH_OUT = config.get('Useg zurah', 'GLYPH_OUT')
+    USEG_ATOM = config.get('Mongol useg', 'USEG_ATOM')
+    USEG_DESC = config.get('Mongol useg', 'USEG_DESC')
+    ATOM_FOLDER=config.get('Mongol useg', 'ATOM_FOLDER')
+    GLYPH_OUT = config.get('Mongol useg', 'GLYPH_OUT')
     if not os.path.exists(GLYPH_OUT):
         os.makedirs(GLYPH_OUT)
     # read atom and desc
