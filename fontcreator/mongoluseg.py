@@ -6,6 +6,7 @@
 # |_|  |_|\___/|_| \_|\____|\___/|_____|  \___/|____/|_____\____|
 #
 # crazy useg creator
+# Author: nagi (natsag2000@googlemail.com)
 #
 import ConfigParser
 import subprocess
@@ -28,25 +29,34 @@ def main():
     usegdesc = readlines(USEG_DESC)
     atoms = read_atoms(usegatoms)
     descs = read_desc(usegdesc)
-    useg_uusge(atoms, descs, GLYPH_OUT)
+    useg_uusge(atoms, descs, ATOM_FOLDER,  GLYPH_OUT)
 
-def useg_uusge(Atoms, Desc, AFolder):
+def useg_uusge(Atoms, Desc, AFolder, OFolder):
     atomkeys = Atoms.keys()
     for Name, Instr in Desc.items():
         li = []
         for I in splitAndStrip(Instr, ' '):
             if not I in atomkeys:
-                print Name, ':', "Key not found: ", I
-                break
+                if isNumber(I):
+                    li.append("--margin "+I)
+                    continue
+                else:
+                    print Name, ':', "Key not found: ", I
+                    break
             if I == ' ' or I == '':
                 continue
             li.append(AFolder+'/' + Atoms[I] + '.svg')
-        Cmd = 'pythonx ' + " ".join(li) + ' > ' + AFolder +'/'+Name + '.svg'
+        Cmd = 'svg_stack.py ' + " --margin -10 ".join(li) + ' > ' + OFolder +'/'+Name + '.svg'
         Cmd1 = Cmd.split(' ')
         if not subprocess.call(Cmd, shell=True) == 0:
             print "Not created: " + Cmd
         else:
             print Name, " created succesfully!"
+
+def isNumber(Str):
+    if Str.startswith("-") or Str.startswith("+"):
+        return Str[1:].isdigit()
+    return Str.isdigit()
 
 def read_atoms(List):
     dic = dict()

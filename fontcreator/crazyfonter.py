@@ -6,6 +6,7 @@
 # |_|  |_|\___/|_| \_|\____|\___/|_____|  \___/|____/|_____\____|
 #
 # crazy font creator
+# Author: nagi (natsag2000@googlemail.com)
 #
 
 import fontforge
