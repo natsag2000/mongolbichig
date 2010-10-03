@@ -33,25 +33,45 @@ def main():
 
 def useg_uusge(Atoms, Desc, AFolder, OFolder):
     atomkeys = Atoms.keys()
+    Missed = {}
     for Name, Instr in Desc.items():
         li = []
+        NotCreated = []
+        Stopped = False
         for I in splitAndStrip(Instr, ' '):
             if not I in atomkeys:
                 if isNumber(I):
                     li.append("--margin "+I)
                     continue
                 else:
+                    Stopped = True
                     print Name, ':', "Key not found: ", I
                     break
             if I == ' ' or I == '':
                 continue
-            li.append(AFolder+'/' + Atoms[I] + '.svg')
+            FilePath = AFolder+'/' + Atoms[I] + '.svg'
+            if not os.path.exists(FilePath):
+                NotCreated.append(FilePath)
+                continue
+            li.append(FilePath)
+        if li == [] or Stopped == True:
+            Missed[Name] = " is not created!"
+            print Name, " is not created!"
+            continue
+        if NotCreated != []:
+            Missed[Name] = NotCreated
+            #print Name, " is NOT CREATED: ", NotCreated
+            continue
         Cmd = 'svg_stack.py ' + " --margin -10 ".join(li) + ' > ' + OFolder +'/'+Name + '.svg'
         Cmd1 = Cmd.split(' ')
         if not subprocess.call(Cmd, shell=True) == 0:
             print "Not created: " + Cmd
         else:
             print Name, " created succesfully!"
+    if Missed != {}:
+        print 'NOT CREATED:'
+        for Key in Missed.keys():
+            print Key, ' : ', Missed[Key]
 
 def isNumber(Str):
     if Str.startswith("-") or Str.startswith("+"):
