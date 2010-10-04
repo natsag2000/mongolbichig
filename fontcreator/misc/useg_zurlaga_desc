@@ -11,11 +11,11 @@
 # "титэм -10 шүд" гэдэг нь титмийн араас шүд залгахдаа арван цэгээр
 # зөрүүлж нийлүүлэхийг зааж өгч байна.
 # ---------------------------------------------------------------
-uni1800
-uni1800.var1
-uni1800.var2
-uni1800.var3
-uni1800.var4
+uni1800               = NOT_READY
+uni1800.var1          = NOT_READY
+uni1800.var2          = NOT_READY
+uni1800.var3          = NOT_READY
+uni1800.var4          = NOT_READY
 uni1801               = v_4_points
 uni1802               = one_point
 uni1803               = v_points
@@ -24,14 +24,14 @@ uni1805               = mgl_point
 uni1806               = нуруу
 uni1807               = нуруу шүд
 uni1807.medi          = шүд
-uni1808
-uni1809
+uni1808               = NOT_READY
+uni1809               = NOT_READY
 uni180A               = нуруу
 uni180A.mark          = нуруу
-uni180B
-uni180C
-uni180D
-uni180E
+uni180B               = NOT_READY
+uni180C               = NOT_READY
+uni180D               = NOT_READY
+uni180E               = NOT_READY
 uni1810               = number0
 uni1811               = number1
 uni1812               = number2

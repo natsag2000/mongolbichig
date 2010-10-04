@@ -57,10 +57,12 @@ def useg_uusge(Atoms, Desc, AFolder, OFolder):
         if li == [] or Stopped == True:
             Missed[Name] = " is not created!"
             print Name, " is not created!"
+            createByCopy(AFolder, OFolder, "soyombo.svg", Name + '.svg')
             continue
         if NotCreated != []:
             Missed[Name] = NotCreated
             #print Name, " is NOT CREATED: ", NotCreated
+            createByCopy(AFolder, OFolder, "soyombo.svg", Name + '.svg')
             continue
         Cmd = 'svg_stack.py ' + " --margin -10 ".join(li) + ' > ' + OFolder +'/'+Name + '.svg'
         Cmd1 = Cmd.split(' ')
@@ -72,6 +74,18 @@ def useg_uusge(Atoms, Desc, AFolder, OFolder):
         print 'NOT CREATED:'
         for Key in Missed.keys():
             print Key, ' : ', Missed[Key]
+
+def createByCopy(AFolder, OFolder, NameA, NameB):
+    AFile = AFolder + '/' + NameA
+    BFile = OFolder + '/' + NameB
+    copyGlyph(AFile, BFile)
+
+def copyGlyph(A, B):
+    Cmd = 'cp ' + A + ' ' + B
+    if not subprocess.call(Cmd, shell=True) == 0:
+        print "Not Created: " + Cmd
+    else:
+        print B, " is copied succesfully!"
 
 def isNumber(Str):
     if Str.startswith("-") or Str.startswith("+"):
