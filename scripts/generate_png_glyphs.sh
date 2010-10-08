@@ -25,6 +25,7 @@ end
 
 foreach File (*.png)
   set newname = `basename $File`
-  convert -rotate 90 -transparent white -resize 30% $File $outputfolder/$File
+  #convert -rotate 90 -transparent white -resize 30% $File $outputfolder/$File
+  convert -transparent white -resize 60% $File $outputfolder/$File
   rm $File
 end
