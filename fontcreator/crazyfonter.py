@@ -12,6 +12,8 @@
 import fontforge
 import ConfigParser
 import os
+import psMat
+from math import pi
 
 # GLOBALS
 MONGOL_USEG      = ''
@@ -24,6 +26,7 @@ FAMILYNAME       = ''
 FULLNAME         = ''
 VERSION          = ''
 FONT             = ''
+ROTATE           = ''
 # internal use
 TMP_FONT = '/tmp/temp.sfd'
 #BLANK_FONT = '../resources/blank.sfd'
@@ -62,6 +65,7 @@ def read_config():
     global FAMILYNAME
     global FULLNAME
     global VERSION
+    global ROTATE
     # read config files
     config = ConfigParser.RawConfigParser()
     config.read("config.cfg")
@@ -71,10 +75,12 @@ def read_config():
     GLYPHS_DIR       = config.get('Font creator', 'GLYPHS_DIR')
     BASE_FONT        = config.get('Font creator', 'BASE_FONT')
     FEATURE_FILE     = config.get('Font creator', 'FEATURE_FILE')
+    ROTATE           = config.get('Font creator', 'ROTATE')
     FONTNAME         = config.get('General', 'FONTNAME')
     FAMILYNAME       = config.get('General', 'FAMILYNAME')
     FULLNAME         = config.get('General', 'FULLNAME')
     VERSION          = config.get('General', 'VERSION')
+
 
 def read_lines(FileName):
     f = file(FileName, 'r')
@@ -87,6 +93,7 @@ def read_lines(FileName):
 def create_standart_zone(Usegs):
     global GLYPHS_DIR
     global FONT
+    global ROTATE
     for letter in Usegs:
         letter = letter.strip()
         unizone=letter.split("uni")[1]
@@ -96,6 +103,8 @@ def create_standart_zone(Usegs):
         # notice that font[glyphname] returns the appropriate glyph
         fontpath = GLYPHS_DIR + '/' +letter+".svg"
         FONT[letter].importOutlines(fontpath)
+        if ROTATE:
+            rotate_glyph(FONT[letter])
         # TODO same spacing for each letter, this is a hack after all TODO!!
         FONT[letter].left_side_bearing = 15
         FONT[letter].right_side_bearing = 15
@@ -113,6 +122,8 @@ def create_private_zone(Usegs):
             print "Glyph image file not found: ", fontpath
             continue
         FONT[letter].importOutlines(fontpath)
+        if ROTATE:
+            rotate_glyph(FONT[letter])
         FONT[letter].left_side_bearing = -15
         FONT[letter].right_side_bearing = -15
         deccounter = deccounter + 1
@@ -144,6 +155,10 @@ def generate_font(FontFileName):
     FONT.version = VERSION
     FONT.fontname = FONTNAME
     FONT.generate(FontFileName)
+
+def rotate_glyph(Glyph):
+    matrix = psMat.rotate(pi/2)
+    Glyph.transform(matrix)
 
 if __name__ == '__main__':
     main()
