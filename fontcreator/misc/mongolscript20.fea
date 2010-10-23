@@ -1,0 +1,249 @@
+@calt1=[ML.A ML.E ML.I ML.O ML.U ML.OE ML.UE ML.EE MLS.U uF305 uF308 uF309 uF30B uF30C uF30D uF30E uF30F uF310 uF311 uF313 uF3A1 uF3A2 uF3A3 uF3A5 uF3A6 uF3A7 uF3A8 uF3A9];
+@calt2=[ML.NA ML.QA ML.MA ML.LA ML.SA ML.SHA ML.TA ML.DA ML.CHA ML.YA ML.RA ML.TSA ML.ZA ML.HAA ML.ZRA ML.LHA ML.ZHI uF307 uF314 uF315 uF316 uF318 uF319 uF320 uF321 uF322 uF323 uF324 uF325 uF326 uF327 uF328 uF329 uF32A uF32B uF32C uF32D uF32E uF32F uF330 uF331 uF332 uF333 uF337 uF338 uF339 uF33A uF33B uF33C uF33D];
+@calt3=[ML.BA ML.PA ML.QA ML.GA ML.MA ML.LA ML.SA ML.SHA ML.TA ML.DA ML.CHA ML.YA ML.RA ML.WA ML.FA ML.KA ML.KHA ML.TSA ML.ZA ML.HAA ML.ZRA ML.LHA uF307 uF318 uF319 uF31A uF31B uF31C uF31F uF320 uF321 uF322 uF323 uF324 uF325 uF326 uF327 uF328 uF329 uF32A uF32B uF32C uF32D uF32E uF32F uF330 uF331 uF332 uF333 uF334 uF335 uF336 uF337 uF338 uF339 uF33A uF33B uF33C uF33D];
+@fina1=[ML.A ML.E ML.I ML.O ML.U ML.OE ML.UE ML.EE ML.NA ML.ANG ML.BA ML.PA ML.QA ML.GA ML.MA ML.LA ML.SA ML.SHA ML.TA ML.DA ML.CHA ML.JA ML.YA ML.RA ML.WA ML.FA ML.KA ML.KHA ML.TSA ML.ZA ML.HAA ML.ZRA];
+@fina2=[uF308 uF3A2 uF30B uF30E uF30E uF3A8 uF3A8 uF313 uF3AC uF317 uF318 uF319 uF31C uF3AF uF321 uF323 uF325 uF329 ML.DA uF32D uF330 uF332 ML.JA uF333 uF313 uF334 uF335 uF336 uF338 uF33A uF33B uF33C];
+@medi1=[ML.A ML.E ML.I ML.O ML.U ML.OE ML.UE ML.EE ML.NA ML.QA ML.GA ML.MA ML.LA ML.SA ML.SHA ML.TA ML.DA ML.CHA ML.JA ML.TSA ML.ZA ML.HAA ML.LHA];
+@medi2=[uF305 uF3A1 ML.JA uF30C uF30C uF3A5 uF3A5 ML.WA uF314 uF307 uF31A uF320 uF322 uF324 uF328 ML.DA uF32C uF32F uF331 uF337 uF339 ML.ZHI uF33D];
+
+feature aalt{
+  feature init;
+  feature medi;
+  feature fina;
+  feature calt;
+  feature isol;
+  feature salt;
+  feature smpl;
+} aalt;
+
+feature kern { # Kerning
+ script mong; # Mongolian
+lookup kern0 {
+    pos ML.LHA ML.ZHI -24;
+} kern0;
+} kern;
+
+feature init { # Initial Forms
+ script mong; # Mongolian
+    sub [ML.A ML.E ML.I ML.O] by [uF304 uF3A0 uF30A ML.U];
+    sub [ML.OE ML.EE ML.DA] by [ML.UE uF312 ML.TA];
+} init;
+
+feature medi { # Medial Forms
+ script mong; # Mongolian
+    sub @medi1 by @medi2;
+} medi;
+
+feature fina { # Terminal Forms
+ script mong; # Mongolian
+    sub @fina1 by @fina2;
+} fina;
+
+feature calt { # Contextual Alternates
+ script mong; # Mongolian
+lookup calt4 {
+    sub uF32C' @calt1 by ML.DA;
+    sub [uF3AC uF3AF]' M.vowel_separator by [uF315 uF31B];
+    sub uF314' @calt3 by uF3AB;
+    sub uF31A' @calt2 by uF3B0;
+} calt4;
+lookup calt7 {
+    sub narrow_no_break_space [ML.O ML.U ML.OE ML.UE]' [uF32D uF3AC] by [ML.O uF30C ML.OE uF3A5];
+    sub narrow_no_break_space [ML.I ML.YA uF30A]' [ML.I ML.JA ML.YA uF30A uF30B] by [ML.JA ML.JA ML.JA];
+} calt7;
+} calt;
+
+feature isol { # Isolated Forms
+ script mong; # Mongolian
+    sub [ML.A ML.E ML.I ML.O] by [ML.A ML.E ML.I ML.O];
+    sub [ML.U ML.OE ML.UE ML.EE] by [ML.O ML.OE ML.OE ML.EE];
+} isol;
+
+feature rlig { # Required Ligatures
+ script mong; # Mongolian
+    sub uF325 MFVS.two by uF327;
+    sub uF3AF MFVS.three by uF31E;
+    sub uF3AF MFVS.two by uF31B;
+    sub ML.A MFVS.one by ML.E;
+    sub ML.E MFVS.one by uF304;
+    sub ML.OE MFVS.one by MLT.UE;
+    sub ML.NA MFVS.one by uF3AA;
+    sub ML.QA MFVS.one by MLA.KA;
+    sub ML.GA MFVS.one by ML.QA;
+    sub ML.TA MFVS.one by ML.DA;
+    sub ML.DA MFVS.one by uF32A;
+    sub ML.YA MFVS.one by ML.JA;
+    sub uF308 MFVS.one by uF309;
+    sub uF30E MFVS.one by uF30F;
+    sub uF314 MFVS.one by uF3AB;
+    sub uF318 MFVS.one by MLT.BA;
+    sub uF325 MFVS.one by uF326;
+    sub uF32D MFVS.one by uF32E;
+    sub uF332 MFVS.one by uF3AD;
+    sub uF3A5 MFVS.one by uF3A6;
+    sub uF3A8 MFVS.one by uF311;
+    sub uF3AC MFVS.one by uF315;
+    sub uF3AF MFVS.one by uF31F;
+    sub uF419 MFVS.one by uF41A;
+    sub M.vowel_separator ML.U by uF30E;
+    sub M.vowel_separator ML.OE by uF30E;
+    sub M.vowel_separator ML.UE by uF30E;
+    sub M.vowel_separator ML.O by uF30E;
+    sub M.vowel_separator ML.I by uF30B;
+    sub M.vowel_separator ML.E by uF309;
+    sub M.vowel_separator ML.A by uF309;
+    sub ML.QA uF313 by uF41D;
+    sub ML.QA ML.WA by uF41C;
+    sub ML.QA uF3A9 by uF41B;
+    sub ML.QA uF3A6 by uF41A;
+    sub ML.QA uF3A8 by uF419;
+    sub ML.QA uF3A5 by uF418;
+    sub ML.QA uF30B by uF417;
+    sub ML.QA ML.JA by uF416;
+    sub ML.QA uF3A2 by uF415;
+    sub ML.QA uF3A1 by uF414;
+    sub ML.GA uF313 by uF41D;
+    sub ML.GA ML.WA by uF41C;
+    sub ML.GA uF3A9 by uF41B;
+    sub ML.GA uF3A6 by uF41A;
+    sub ML.GA uF3A8 by uF419;
+    sub ML.GA uF3A5 by uF418;
+    sub ML.GA uF30B by uF417;
+    sub ML.GA ML.JA by uF416;
+    sub ML.GA uF3A2 by uF415;
+    sub ML.GA uF3A1 by uF414;
+    sub uF307 uF313 by uF41D;
+    sub uF307 ML.WA by uF41C;
+    sub uF307 uF3A9 by uF41B;
+    sub uF307 uF3A6 by uF41A;
+    sub uF307 uF3A8 by uF419;
+    sub uF307 uF3A5 by uF418;
+    sub uF307 uF30B by uF417;
+    sub uF307 ML.JA by uF416;
+    sub uF307 uF3A2 by uF415;
+    sub uF307 uF3A1 by uF414;
+    sub uF31A uF313 by uF41D;
+    sub uF31A ML.WA by uF41C;
+    sub uF31A uF3A9 by uF41B;
+    sub uF31A uF3A6 by uF41A;
+    sub uF31A uF3A8 by uF419;
+    sub uF31A uF3A5 by uF418;
+    sub uF31A uF30B by uF417;
+    sub uF31A ML.JA by uF416;
+    sub uF31A uF3A2 by uF415;
+    sub uF31A uF3A1 by uF414;
+    sub ML.BA uF313 by uF409;
+    sub ML.BA ML.WA by uF408;
+    sub ML.BA uF311 by uF407;
+    sub ML.BA uF3A9 by uF407;
+    sub ML.BA MLS.U by uF406;
+    sub ML.BA uF3A6 by uF406;
+    sub ML.BA uF30E by uF405;
+    sub ML.BA uF3A8 by uF405;
+    sub ML.BA uF30C by uF404;
+    sub ML.BA uF3A5 by uF404;
+    sub ML.BA uF30B by uF403;
+    sub ML.BA ML.JA by uF402;
+    sub ML.BA uF308 by uF401;
+    sub ML.BA uF3A2 by uF401;
+    sub ML.BA uF3A1 by uF400;
+    sub ML.BA uF305 by uF400;
+    sub ML.PA uF313 by uF413;
+    sub ML.PA ML.WA by uF412;
+    sub ML.PA uF311 by uF411;
+    sub ML.PA uF3A9 by uF411;
+    sub ML.PA MLS.U by uF410;
+    sub ML.PA uF3A6 by uF410;
+    sub ML.PA uF30E by uF40F;
+    sub ML.PA uF3A8 by uF40F;
+    sub ML.PA uF30C by uF40E;
+    sub ML.PA uF3A5 by uF40E;
+    sub ML.PA uF30B by uF40D;
+    sub ML.PA ML.JA by uF40C;
+    sub ML.PA uF308 by uF40B;
+    sub ML.PA uF3A2 by uF40B;
+    sub ML.PA uF3A1 by uF40A;
+    sub ML.PA uF305 by uF40A;
+    sub ML.FA uF313 by uF431;
+    sub ML.FA ML.WA by uF430;
+    sub ML.FA uF311 by uF42F;
+    sub ML.FA uF3A9 by uF42F;
+    sub ML.FA uF3A6 by uF42E;
+    sub ML.FA MLS.U by uF42E;
+    sub ML.FA uF30E by uF42D;
+    sub ML.FA uF3A8 by uF42D;
+    sub ML.FA uF30C by uF42C;
+    sub ML.FA uF3A5 by uF42C;
+    sub ML.FA uF30B by uF42B;
+    sub ML.FA ML.JA by uF42A;
+    sub ML.FA uF308 by uF429;
+    sub ML.FA uF3A2 by uF429;
+    sub ML.FA uF305 by uF428;
+    sub ML.FA uF3A1 by uF428;
+    sub ML.KA uF313 by uF43B;
+    sub ML.KA ML.WA by uF43A;
+    sub ML.KA uF3A9 by uF439;
+    sub ML.KA uF311 by uF439;
+    sub ML.KA MLS.U by uF438;
+    sub ML.KA uF3A6 by uF438;
+    sub ML.KA uF30E by uF437;
+    sub ML.KA uF3A8 by uF437;
+    sub ML.KA uF30C by uF436;
+    sub ML.KA uF3A5 by uF436;
+    sub ML.KA uF30B by uF435;
+    sub ML.KA ML.JA by uF434;
+    sub ML.KA uF3A2 by uF433;
+    sub ML.KA uF308 by uF433;
+    sub ML.KA uF305 by uF432;
+    sub ML.KA uF3A1 by uF432;
+    sub ML.KHA uF313 by uF445;
+    sub ML.KHA ML.WA by uF444;
+    sub ML.KHA uF311 by uF443;
+    sub ML.KHA uF3A9 by uF443;
+    sub ML.KHA MLS.U by uF442;
+    sub ML.KHA uF3A6 by uF442;
+    sub ML.KHA uF30E by uF441;
+    sub ML.KHA uF3A8 by uF441;
+    sub ML.KHA uF3A5 by uF440;
+    sub ML.KHA uF30C by uF440;
+    sub ML.KHA uF30B by uF43F;
+    sub ML.KHA ML.JA by uF43E;
+    sub ML.KHA uF308 by uF43D;
+    sub ML.KHA uF3A2 by uF43D;
+    sub ML.KHA uF305 by uF43C;
+    sub ML.KHA uF3A1 by uF43C;
+} rlig;
+
+feature salt { # Stylistic Alternates
+ script mong; # Mongolian
+lookup salt8 {
+    sub uF32C by ML.DA;
+} salt8;
+lookup salt9 {
+    sub [uF3AC uF3AF] by [uF315 uF31B];
+} salt9;
+lookup salt10 {
+    sub [uF314 uF31A] by [uF3AB uF3B0];
+} salt10;
+lookup salt13 {
+    sub [ML.I ML.U ML.UE ML.YA] by [ML.JA uF30C uF3A5 ML.JA];
+    sub uF30A by ML.JA;
+} salt13;
+} salt;
+
+feature  RQD {
+ script mong; # Mongolian
+    sub ML.BA uF3A8 by uF406;
+    sub ML.PA uF3A8 by uF410;
+    sub ML.QA uF3A8 by uF41A;
+    sub ML.GA uF3A8 by uF41A;
+    sub ML.FA uF3A8 by uF42E;
+    sub ML.KA uF3A8 by uF438;
+    sub ML.KHA uF3A8 by uF442;
+}  RQD;
+
+feature smpl { # Simplified Forms
+ script mong; # Mongolian
+    sub [uF3A5 uF3A8] by [uF3A9 uF3A9];
+} smpl;
+
