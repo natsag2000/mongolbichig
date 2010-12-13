@@ -1,19 +1,35 @@
 #!/usr/bin/env python
+# -- coding: utf-8 --
+#@+leo-ver=5-thin
+#@+node:nagi.20101207083602.1317: * @file /home/nagi/nagi-gits/mongolbichig/fontcreator/crazyfonter.py
+#@@first
+#@@first
+#@@language python
+#@@tabwidth -4
+#@+others
+#@+node:nagi.20101207083602.1328: ** толгой хэсэг
+# ----------------------------------------------------------------
 #  __  __  ___  _   _  ____  ___  _       _   _ ____  _____ ____
 # |  \/  |/ _ \| \ | |/ ___|/ _ \| |     | | | / ___|| ____/ ___|
 # | |\/| | | | |  \| | |  _| | | | |     | | | \___ \|  _|| |  _
 # | |  | | |_| | |\  | |_| | |_| | |___  | |_| |___) | |__| |_| |
 # |_|  |_|\___/|_| \_|\____|\___/|_____|  \___/|____/|_____\____|
 #
-# crazy font creator
-# Author: nagi (natsag2000@googlemail.com)
+# mongol otf font creator
+# отф тиг үүсгэгч
 #
+# Author: nagi (natsag2000@googlemail.com)
+# ----------------------------------------------------------------
+#@+node:nagi.20101207083602.1318: ** imports and globals
 
+#@+<<imports>>
+#@+node:nagi.20101207083602.1329: *3* <<imports>>
 import fontforge
 import ConfigParser
 import os
 import psMat
 from math import pi
+#@-<<imports>>
 
 # GLOBALS
 MONGOL_USEG      = ''
@@ -33,6 +49,7 @@ TMP_FONT = '/tmp/temp.sfd'
 # private usage zone
 PRIVATE_ZONE =hex(0xf300)
 
+#@+node:nagi.20101207083602.1319: ** main үндсэн гол дуудагдах функц
 def main():
     global MONGOL_USEG
     global MONGOL_USEG_EXT
@@ -45,16 +62,7 @@ def main():
     replace_feature()
     generate_font("crazyfont.ttf")
 
-def prepare_font():
-    global BASE_FONT
-    global TMP_FONT
-    global FONT
-    fontbase = fontforge.open(BASE_FONT)
-    # Delta char has conflict by otf generation, so delete it
-    fontbase["Delta"].clear()
-    fontbase.generate(TMP_FONT)
-    FONT = fontforge.open(TMP_FONT)
-
+#@+node:nagi.20101207083602.1321: ** read_config
 def read_config():
     global MONGOL_USEG
     global MONGOL_USEG_EXT
@@ -82,14 +90,29 @@ def read_config():
     VERSION          = config.get('General', 'VERSION')
 
 
+#@+node:nagi.20101207083602.1320: ** prepare_font
+def prepare_font():
+    global BASE_FONT
+    global TMP_FONT
+    global FONT
+    fontbase = fontforge.open(BASE_FONT)
+    # Delta char has conflict by otf generation, so delete it
+    fontbase["Delta"].clear()
+    fontbase.generate(TMP_FONT)
+    FONT = fontforge.open(TMP_FONT)
+
+#@+node:nagi.20101207083602.1322: ** read_lines
 def read_lines(FileName):
     f = file(FileName, 'r')
     lines = f.readlines()
     f.close()
     return lines
 
+#@+node:nagi.20101207083602.1323: ** create_standart_zone
+#@+at
 # first unicode standart zone
 # TODO check special cases: maaglha, dottedcircle etc!!
+#@@c
 def create_standart_zone(Usegs):
     global GLYPHS_DIR
     global FONT
@@ -109,6 +132,7 @@ def create_standart_zone(Usegs):
         FONT[letter].left_side_bearing = 15
         FONT[letter].right_side_bearing = 15
 
+#@+node:nagi.20101207083602.1324: ** create_private_zone
 def create_private_zone(Usegs):
     global PRIVATE_ZONE
     global GLYPHS_DIR
@@ -128,6 +152,7 @@ def create_private_zone(Usegs):
         FONT[letter].right_side_bearing = -15
         deccounter = deccounter + 1
 
+#@+node:nagi.20101207083602.1325: ** replace_feature
 # replace feature
 def replace_feature(Fea = None):
     global FONT
@@ -144,6 +169,7 @@ def replace_feature(Fea = None):
     else:
         FONT.mergeFeature(Feature)
 
+#@+node:nagi.20101207083602.1326: ** generate_font
 def generate_font(FontFileName):
     global FONTNAME
     global FAMILYNAME
@@ -156,9 +182,12 @@ def generate_font(FontFileName):
     FONT.fontname = FONTNAME
     FONT.generate(FontFileName)
 
+#@+node:nagi.20101207083602.1327: ** rotate_glyph
 def rotate_glyph(Glyph):
     matrix = psMat.rotate(pi/2)
     Glyph.transform(matrix)
 
+#@-others
 if __name__ == '__main__':
     main()
+#@-leo

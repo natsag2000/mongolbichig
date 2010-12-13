@@ -1,4 +1,14 @@
 #!/usr/bin/env python
+# -- coding: utf-8 --
+#@+leo-ver=5-thin
+#@+node:nagi.20101207083602.1297: * @file /home/nagi/nagi-gits/mongolbichig/fontcreator/mongoluseg.py
+#@@first
+#@@first
+#@@language python
+#@@tabwidth -4
+#@+others
+#@+node:nagi.20101207083602.1309: ** толгой хэсэг
+# ----------------------------------------------------------------
 #  __  __  ___  _   _  ____  ___  _       _   _ ____  _____ ____
 # |  \/  |/ _ \| \ | |/ ___|/ _ \| |     | | | / ___|| ____/ ___|
 # | |\/| | | | |  \| | |  _| | | | |     | | | \___ \|  _|| |  _
@@ -6,18 +16,25 @@
 # |_|  |_|\___/|_| \_|\____|\___/|_____|  \___/|____/|_____\____|
 #
 # crazy useg creator
-# Author: nagi (natsag2000@googlemail.com)
+# үсэг үүсгэгч
 #
+# Author: nagi (natsag2000@googlemail.com)
+# ----------------------------------------------------------------
+#@+node:nagi.20101207083602.1298: ** import хэсэг
 import ConfigParser
 import subprocess
 import re
 import os
 
+#@+node:nagi.20101207083602.1299: ** main гол дуудагдах функц
 def main():
     # read config file
     config = ConfigParser.RawConfigParser()
     config.read("config.cfg")
-    # TODO: check if they exist!
+    #@+<<TODO тохиргооны оруулгууд зөв эсэхийг шалгах>>
+    #@+node:nagi.20101207083602.1313: *3* <<TODO тохиргооны оруулгууд зөв эсэхийг шалгах>>
+    # TODO: Тохиргооны оруулгууд зөв үү гэдгийг шалга!
+    #@-<<TODO тохиргооны оруулгууд зөв эсэхийг шалгах>>
     USEG_ATOM = config.get('Mongol useg', 'USEG_ATOM')
     USEG_DESC = config.get('Mongol useg', 'USEG_DESC')
     ATOM_FOLDER=config.get('Mongol useg', 'ATOM_FOLDER')
@@ -31,6 +48,7 @@ def main():
     descs = read_desc(usegdesc)
     useg_uusge(atoms, descs, ATOM_FOLDER,  GLYPH_OUT)
 
+#@+node:nagi.20101207083602.1300: ** useg_uusge
 def useg_uusge(Atoms, Desc, AFolder, OFolder):
     atomkeys = Atoms.keys()
     Missed = {}
@@ -75,11 +93,16 @@ def useg_uusge(Atoms, Desc, AFolder, OFolder):
         for Key in Missed.keys():
             print Key, ' : ', Missed[Key]
 
+#@+node:nagi.20101207083602.1301: ** createByCopy
+#@+at
+# зөвхөн сангаас сангийн хооронд хуулна
+#@@c
 def createByCopy(AFolder, OFolder, NameA, NameB):
     AFile = AFolder + '/' + NameA
     BFile = OFolder + '/' + NameB
     copyGlyph(AFile, BFile)
 
+#@+node:nagi.20101207083602.1302: ** copyGlyph
 def copyGlyph(A, B):
     Cmd = 'cp ' + A + ' ' + B
     if not subprocess.call(Cmd, shell=True) == 0:
@@ -87,11 +110,13 @@ def copyGlyph(A, B):
     else:
         print B, " is copied succesfully!"
 
+#@+node:nagi.20101207083602.1303: ** isNumber
 def isNumber(Str):
     if Str.startswith("-") or Str.startswith("+"):
         return Str[1:].isdigit()
     return Str.isdigit()
 
+#@+node:nagi.20101207083602.1304: ** read_atoms
 def read_atoms(List):
     dic = dict()
     for L in List:
@@ -108,6 +133,7 @@ def read_atoms(List):
             dic[L1] = L1
     return dic
 
+#@+node:nagi.20101207083602.1305: ** read_desc
 def read_desc(List):
     dic = dict()
     for L in List:
@@ -122,18 +148,23 @@ def read_desc(List):
         dic[L2[0]] = L2[1]
     return dic
 
+#@+node:nagi.20101207083602.1306: ** splitAndStrip
 def splitAndStrip(Line, Pattern):
     return [ X.strip() for X in Line.split(Pattern) if X != '']
 
+#@+node:nagi.20101207083602.1307: ** isEmptyOrComment
 def isEmptyOrComment(Line):
     if Line.startswith('#') or len(Line) == 0:
         return True
 
+#@+node:nagi.20101207083602.1308: ** readlines
 def readlines(FileName):
     f = file(FileName, 'r')
     lines = f.readlines()
     f.close()
     return lines
 
+#@-others
 if __name__=='__main__':
     main()
+#@-leo
