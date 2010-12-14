@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -- coding: utf-8 --
 #@+leo-ver=5-thin
-#@+node:nagi.20101207083602.1297: * @file /home/nagi/nagi-gits/mongolbichig/fontcreator/mongoluseg.py
+#@+node:nagi.20101207083602.1297: * @file {{os.getenv('HOME')}}/nagi-gits/mongolbichig/fontcreator/mongoluseg.py
 #@@first
 #@@first
 #@@language python
