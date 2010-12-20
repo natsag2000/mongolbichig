@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -- coding: utf-8 --
 #@+leo-ver=5-thin
-#@+node:nagi.20101207083602.1317: * @file {{os.getenv('HOME')}}/nagi-gits/mongolbichig/fontcreator/crazyfonter.py
+#@+node:nagi.20101207083602.1317: * @file /home/nagi/nagi-gits/mongolbichig/fontcreator/crazyfonter.py
 #@@first
 #@@first
 #@@language python
@@ -21,7 +21,6 @@
 # Author: nagi (natsag2000@googlemail.com)
 # ----------------------------------------------------------------
 #@+node:nagi.20101207083602.1318: ** imports and globals
-
 #@+<<imports>>
 #@+node:nagi.20101207083602.1329: *3* <<imports>>
 import fontforge
@@ -30,8 +29,8 @@ import os
 import psMat
 from math import pi
 #@-<<imports>>
-
-# GLOBALS
+#@+<<globals>>
+#@+node:nagi.20101220080109.1774: *3* <<globals>>
 MONGOL_USEG      = ''
 MONGOL_USEG_EXT  = ''
 GLYPHS_DIR       = ''
@@ -48,6 +47,7 @@ TMP_FONT = '/tmp/temp.sfd'
 #BLANK_FONT = '../resources/blank.sfd'
 # private usage zone
 PRIVATE_ZONE =hex(0xf300)
+#@-<<globals>>
 
 #@+node:nagi.20101207083602.1319: ** main үндсэн гол дуудагдах функц
 def main():
